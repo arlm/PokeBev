@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Pokemon from './components/Pokemon/Pokemon';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <Pokemon></Pokemon>
     </div>
   );
 }
