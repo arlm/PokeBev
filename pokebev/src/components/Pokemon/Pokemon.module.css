@@ -1,1 +1,7 @@
-.Pokemon {}
+.Pokemon {
+    background-color: yellow;
+    width: 50%;
+    height: 50%;
+    padding: 10px;
+    margin: 5px;
+}

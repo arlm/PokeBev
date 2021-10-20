@@ -1,9 +1,15 @@
 import React from 'react'
 import * as styles from './Pokemon.module.css';
 
-const Pokemon = () => (
-  <div className={styles.default.pokemon} data-testid="Pokemon">
-    Pokemon Component
+type PokemonData = {
+ 
+  name: string,
+  url: string
+}
+
+const Pokemon = (parametros: PokemonData) => (
+  <div className={styles.default.Pokemon} data-testid="Pokemon">
+    {parametros.name}
   </div>
 );
 
