@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import * as styles from './Pokemon.module.css';
 
 const Pokemon = () => (

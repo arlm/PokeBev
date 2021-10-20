@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
+    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.1",
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.0.9",
     "bootstrap": "^5.1.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-rc.1",
@@ -14,6 +17,12 @@
     "testing-library": "^0.0.2",
     "typescript": "^4.4.4",
     "web-vitals": "^1.0.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    }
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,10 +49,15 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.15.8",
     "@babel/plugin-syntax-jsx": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
+    "@testing-library/jest-dom": "^5.14.1",
     "css-loader": "^6.4.0",
+    "identity-obj-proxy": "^3.0.0",
     "typings-for-css-modules-loader": "^1.7.0"
   }
 }
