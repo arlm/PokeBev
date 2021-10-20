@@ -1,9 +1,11 @@
 .Pokemon-List {
   display: flex;
   align-items: center;
-  align-content: center;
+  justify-content:space-between;
   background-color: tomato;
-  height: 50vh;
+  width: 75vw;
+  flex-wrap: wrap;
+  
 
 }
 

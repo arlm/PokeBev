@@ -13,7 +13,7 @@ function AppPokemon() {
   const [pokemons, setPokemons] = useState<PokemonData[]>([]);
 
   useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=10')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=50')
     .then((response) => response.json()) //espera a resposta
     .then((data) => setPokemons(data.results)); //espera o json ficar pronto
   }, []);
