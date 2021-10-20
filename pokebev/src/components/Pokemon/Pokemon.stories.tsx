@@ -5,8 +5,14 @@ export default {
   title: "Pokemon",
 };
 
-export const Default = () => <Pokemon />;
+export const Default = () => <Pokemon url='' name=''/>;
 
 Default.story = {
   name: 'default',
 };
+
+
+
+
+
+
