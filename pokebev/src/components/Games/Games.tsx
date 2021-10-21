@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import PokeLoagind from './loading.gif';
+import styles from './Games.module.css';
 import { Card, ListGroup, Modal } from 'react-bootstrap';
 
 function Games() {
   const [generations, setGenerations] = useState<any>();
   const [generation, setGeneration] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const pegaGeracoes = async () => {
@@ -15,12 +18,12 @@ function Games() {
   }, []);
 
   const getGeneration = async (nameGeneration: any) => {
+    setLoading(true);
     try {
       const resposta = await fetch(`https://pokeapi.co/api/v2/generation/${nameGeneration}`);
       const objGeneration = await resposta.json();
-      console.log(objGeneration.pokemon_species);
-
       setGeneration(objGeneration.pokemon_species);
+      setLoading(false);
     } catch (error) {
 
     }
@@ -31,22 +34,32 @@ function Games() {
   }
 
   return (
-    <div>
+    <div className={styles.Games}>
       {
-        generations &&
+        (generations && !generation && !loading) &&
         (
           <>
             <Card style={{ width: '18rem' }}>
               <Card.Header>Gerações dos Pokemons</Card.Header>
               <Card.Body>
                 <ListGroup variant="flush">
-                  {generations.map((gen: any) => <ListGroup.Item onClick={() => getGeneration(gen.name)}>{gen.name}</ListGroup.Item>)}
+                  {generations.map((gen: any) => <ListGroup.Item key={gen.name} onClick={() => getGeneration(gen.name)}>{gen.name}</ListGroup.Item>)}
                 </ListGroup>
               </Card.Body>
             </Card>
           </>
         )
       }
+
+      {loading &&
+        (
+          <div className={styles.loading}>
+            <img src={PokeLoagind} alt="Loading" />
+            <h1>Carregando... </h1>
+          </div>
+        )
+      }
+
       {
         generation &&
         (
@@ -57,7 +70,7 @@ function Games() {
 
             <Modal.Body>
               <ListGroup variant="flush">
-                {generation.map((pokemons: any) => <ListGroup.Item>{pokemons.name}</ListGroup.Item>)}
+                {generation.map((pokemons: any) => <ListGroup.Item key={pokemons.name}>{pokemons.name}</ListGroup.Item>)}
               </ListGroup>
             </Modal.Body>
           </Modal.Dialog>
