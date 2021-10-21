@@ -1,14 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Game from './Game';
+import Games from './Games';
 
-describe('<Game />', () => {
+describe('<Games />', () => {
   test('it should mount', () => {
-    render(<Game />);
-    
-    const game = screen.getByTestId('Game');
+    render(<Games />);
 
-    expect(game).toBeInTheDocument();
+    const games = screen.getByTestId('Games');
+
+    expect(games).toBeInTheDocument();
   });
 });
