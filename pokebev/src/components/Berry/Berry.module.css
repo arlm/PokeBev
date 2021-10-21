@@ -1,1 +1,9 @@
-.Berry {}
+.Berry {
+    background-color: rgb(135, 122, 192);
+    width: 150px;
+    height: 300px;
+    padding: 10px;
+    margin: 5px;
+    font-size: large;
+
+}

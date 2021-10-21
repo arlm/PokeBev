@@ -5,7 +5,7 @@ export default {
   title: "Berry",
 };
 
-export const Default = () => <Berry />;
+export const Default = () => <Berry url='' name='' natural_gift_power />;
 
 Default.story = {
   name: 'default',

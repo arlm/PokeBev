@@ -5,8 +5,30 @@
   background-color: tomato;
   width: 75vw;
   flex-wrap: wrap;
+  margin: 10px;
+
+}
+
+.Berries-List {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  background-color: rgb(114, 26, 107);
+  width: 75vw;
+  flex-wrap: wrap;
+  margin: 10px;
   
 
 }
 
+.Contests-List {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  background-color: rgb(26, 18, 139);
+  width: 75vw;
+  flex-wrap: wrap;
+  margin: 10px;
+
+}
 
