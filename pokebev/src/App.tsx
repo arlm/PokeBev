@@ -1,33 +1,30 @@
 import  {useEffect, useState} from 'react'
 import './App.css';
 import Pokemon from './components/Pokemon/Pokemon';
+import Evolution from './components/Evolution/Evolution';
 
-type PokemonData = {
- 
-  name: string,
+type PokemonDataEvolution = {
   url: string
 }
 
 function AppPokemon() {
-
-  const [pokemons, setPokemons] = useState<PokemonData[]>([]);
+  const [evolution, setEvolution] = useState<PokemonDataEvolution[]>([]);
 
   useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=50')
+    fetch('https://pokeapi.co/api/v2/evolution-chain/')
     .then((response) => response.json()) //espera a resposta
-    .then((data) => setPokemons(data.results)); //espera o json ficar pronto
+    .then((data) => setEvolution(data.results)); //espera o json ficar pronto
   }, []);
-
-
 
   return (
     <div className="Pokemon-List">
       {
-        pokemons.length > 0 && pokemons.map((pokemon) => <Pokemon url={pokemon.url} name={pokemon.name}></Pokemon>) //se a primeira for falsa, para.
+        evolution.length > 0 && evolution.map((pokemon) => <Evolution url={pokemon.url}></Evolution>) //se a primeira for falsa, para.
       }
     </div>
   )
 }
+
 
 export default AppPokemon;
 

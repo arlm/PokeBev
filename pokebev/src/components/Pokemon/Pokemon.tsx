@@ -25,7 +25,7 @@ function Pokemon  (parametros: PokemonData)  {
       {parametros.name}
     </div>
   )
-  } else{ console.log(pokemon)
+  } else{ console.log('')
     //Resposta quando temos a informação
   return (
   
