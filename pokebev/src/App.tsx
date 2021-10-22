@@ -14,7 +14,7 @@ type BerryData = {
  
   name: string,
   url: string,
-  natural_gift_power: number
+  
 }
 
 function AppPokemon() {
@@ -54,7 +54,7 @@ function AppPokemon() {
 
       <div className="Berries-List">
         {
-          berries.length > 0 && berries.map((berry) => <Berry url={berry.url} name={berry.name} natural_gift_power={berry.natural_gift_power} ></Berry>) //se a primeira for falsa, para.
+          berries.length > 0 && berries.map((berry) => <Berry url={berry.url} name={berry.name}  ></Berry>) //se a primeira for falsa, para.
         }
       </div>
 

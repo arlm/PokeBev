@@ -1,29 +1,33 @@
 import {useEffect, useState} from 'react';
+import BerryImage from '../BerryImage/BerryImage';
 import * as styles from './Berry.module.css';
 
-/*const Berry = () => (
-  <div className={styles.Berry} data-testid="Berry">
-    Berry Component
-  </div>
-);*/
 
 
 type BerryData = {
  
   name: string,
   url: string,
-  natural_gift_power: any
+ 
+}
+
+interface Data  {
+  natural_gift_power: number ,
+  name: string,
+  item: BerryData
 }
 
 function Berry  (parametros: BerryData)  {
 
-   const [berries, setBerry] = useState<any>(undefined);
+   const [berries, setBerry] = useState<Data | undefined>(undefined);
+   
 
   useEffect(() => { //faz a chamada, mas nao tem resposta
     fetch(parametros.url)
     .then((response) => response.json()) //espera a resposta
-    .then((data) => setBerry(data)); //espera o json ficar pronto
+    .then((data)=> setBerry(data)); //espera o json ficar pronto
   }, []);
+
   
  if(!berries){
    //Resposta enquanto não temos a informação
@@ -31,21 +35,26 @@ function Berry  (parametros: BerryData)  {
   
     <div className={styles.default.Berry} data-testid="Berry">
       {parametros.name}
-      {console.log(parametros.natural_gift_power)}
-      
-      {parametros.natural_gift_power}
+           
+      carregando berries...
+
     </div>
   )
-  } else{ console.log(berries)
+  } else{ 
     //Resposta quando temos a informação
+    
   return (
     <div>
       <div className={styles.default.Berry} data-testid="Berry">
-        {/* <img src={berries.sprites.front_default}></img>
-        <img src={berries.sprites.back_default}></img> */}
-        {parametros.name}
-        {console.log(parametros.natural_gift_power)}
-        {parametros.natural_gift_power}
+        
+        {berries.name}
+        <BerryImage name={berries.item.name} url={berries.item.url} />
+        <ul>
+          <li>
+            Natural Gift Power:{berries.natural_gift_power}
+          </li>
+        </ul>
+        
       </div>
       
     </div>  
