@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Modal, ModalTitle, ModalBody } from "react-bootstrap";
+import { Button, Modal, ModalTitle, ModalBody } from "react-bootstrap";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
 
 
-export default function ModalScreen(this: any) {
-    const [show, setShow] = useState(true);
+export default function ScreenLocations() {
+    const [show, setShow] = useState(false);
+
 
   return (
-      <>
+    <>
+      <Button className='mt-4' variant='secondary' onClick={() => setShow(true)}> Locations </Button>
+
       <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
           <ModalHeader closeButton>
               <ModalTitle> Locations </ModalTitle>
@@ -19,6 +22,6 @@ export default function ModalScreen(this: any) {
           </ModalBody>
       </Modal>
 
-      </>
+    </>
   );
 }

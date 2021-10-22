@@ -1,22 +1,27 @@
 import { useState } from "react";
-import { Modal } from "react-bootstrap";
+import { Button, Modal, ModalTitle, ModalBody } from "react-bootstrap";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
-import { ModalBody, ModalTitle } from "react-bootstrap";
-import Machine from "./Machine";
 
 
+export default function ScreenMachines() {
+    const [show, setShow] = useState(false);
 
-export default function ModalScreen() {
-    const [show, setShow] = useState(true);
 
   return (
+    <>
+      <Button className='mt-4' variant='secondary' onClick={() => setShow(true)}> Machines </Button>
+
       <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
           <ModalHeader closeButton>
-              <ModalTitle> Lista de Machines (TMs) </ModalTitle>
+              <ModalTitle> Machines </ModalTitle>
           </ModalHeader>
           <ModalBody>
-            <Machine />
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut aliquam fuga officiis maiores excepturi quas consequatur nihil officia rerum esse voluptatem ratione voluptates veniam cupiditate iusto nemo provident, quidem similique!
+            </p>
           </ModalBody>
       </Modal>
+
+    </>
   );
 }
