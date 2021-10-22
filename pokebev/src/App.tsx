@@ -1,33 +1,22 @@
-import  {useEffect, useState} from 'react'
+import  { useState } from 'react'
 import './App.css';
-import Pokemon from './components/Pokemon/Pokemon';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ModalScreen from './components/Machine/ModalMachine';
+import { Button } from 'react-bootstrap';
 
-type PokemonData = {
- 
-  name: string,
-  url: string
-}
+function AppMachine() {
 
-function AppPokemon() {
-
-  const [pokemons, setPokemons] = useState<PokemonData[]>([]);
-
-  useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=50')
-    .then((response) => response.json()) //espera a resposta
-    .then((data) => setPokemons(data.results)); //espera o json ficar pronto
-  }, []);
-
-
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
-    <div className="Pokemon-List">
-      {
-        pokemons.length > 0 && pokemons.map((pokemon) => <Pokemon url={pokemon.url} name={pokemon.name}></Pokemon>) //se a primeira for falsa, para.
-      }
-    </div>
-  )
+    <>
+      <div className='MachineButton'>
+        <Button variant='secondary' onClick={() => setIsModalVisible(true)}> Machines </Button>
+        {isModalVisible? <ModalScreen /> : null}
+      </div>
+    </>
+  );
 }
 
-export default AppPokemon;
+export default AppMachine;
 
