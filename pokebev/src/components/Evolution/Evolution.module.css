@@ -27,3 +27,8 @@ p{
     font-size: medium;
     color: rgb(10, 10, 10);
 }
+
+span{
+    font-size: small;
+    color: rgb(46, 46, 46);
+}
