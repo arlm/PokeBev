@@ -1,1 +1,16 @@
-.Evolution {}
+.Evolution {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+  
+   border: 1px solid ;
+   border-radius: 10%;
+   border-bottom: solid;
+}
+
+p{
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: medium;
+    color: rgb(10, 10, 10);
+}

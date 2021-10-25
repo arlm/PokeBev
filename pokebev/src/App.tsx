@@ -16,6 +16,7 @@ function AppPokemon() {
     .then((data) => setEvolution(data.results)); //espera o json ficar pronto
   }, []);
 
+  //realizar uma nova requisição para pegar os sprites(imagens direto da api)
   return (
     <div className="Pokemon-List">
       {
