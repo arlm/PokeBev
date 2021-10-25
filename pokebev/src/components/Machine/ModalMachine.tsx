@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Modal, ModalTitle, ModalBody } from "react-bootstrap";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
+import Machine from "./Machine";
 
 
 export default function ScreenMachines() {
@@ -18,6 +19,7 @@ export default function ScreenMachines() {
           <ModalBody>
             <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut aliquam fuga officiis maiores excepturi quas consequatur nihil officia rerum esse voluptatem ratione voluptates veniam cupiditate iusto nemo provident, quidem similique!
+                <Machine />
             </p>
           </ModalBody>
       </Modal>
