@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 
 interface MachineData {
   url: string,
-  id?: number,
-  item?: string,
-  name?:string,
+  id?: any,
+  name?:any,
 }
 
 export default function MachineAnalysis(parametros: MachineData) {
-  const [machines, setMachines] = useState<MachineData[]>([]);
+  const [machines, setMachines] = useState<any>(undefined);
 
   useEffect(() => {
     fetch(parametros.url)
@@ -20,7 +19,11 @@ export default function MachineAnalysis(parametros: MachineData) {
   console.log(machines);
 
   return (
-    <li key={parametros.item}> {parametros.url} </li>
+    <li> <p> Machine ID: {machines?.id} <br/>
+        Name: {machines?.item.name ?? "ERROR"} <br/>
+        Move: {machines?.move.name ?? "ERROR"} <br/>
+        Version Group: {machines?.version_group.name ?? "ERROR"} </p>
+    </li>
   );
 }
 

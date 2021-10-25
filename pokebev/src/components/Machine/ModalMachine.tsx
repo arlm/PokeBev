@@ -17,10 +17,7 @@ export default function ScreenMachines() {
               <ModalTitle> Machines </ModalTitle>
           </ModalHeader>
           <ModalBody>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut aliquam fuga officiis maiores excepturi quas consequatur nihil officia rerum esse voluptatem ratione voluptates veniam cupiditate iusto nemo provident, quidem similique!
-                <Machine />
-            </p>
+              <Machine />
           </ModalBody>
       </Modal>
 
