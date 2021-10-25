@@ -1,12 +1,25 @@
 .Evolution {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;   
+    width: 370px;
+    height:600px;
   
    border: 1px solid ;
    border-radius: 10%;
    border-bottom: solid;
 }
+.PokemonBase{
+   width: fit-content;
+    height: 130px;
+}
+
+.PokemonMini{
+     
+    width: fit-content;
+     height: 90px;
+ }
 
 p{
     

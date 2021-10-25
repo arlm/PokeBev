@@ -64,15 +64,15 @@ if(!evolucao.chain.evolves_to[0].evolves_to[0]){
     <div className={styles.Evolution} data-testid="Evolution">         
       
           
-      <span>
-      <img alt= {evolucao.chain.species.name} src= {srcBaseImg} /> 
+     
+      <img className={styles.PokemonBase} alt= {evolucao.chain.species.name} src= {srcBaseImg} /> 
       <h3>{evolucao.chain.species.name}</h3>    
-      <img  alt= {evolucao.chain.evolves_to[0].species.name} src= {srcEvolutionImg} />
+      <img className={styles.PokemonMini} alt= {evolucao.chain.evolves_to[0].species.name} src= {srcEvolutionImg} />
       <p>{evolucao.chain.evolves_to[0].species.name}</p>
            
       <p>{evolution2}</p>
        
-    </span>
+   
     </div>    
       
  
@@ -81,12 +81,11 @@ if(!evolucao.chain.evolves_to[0].evolves_to[0]){
 
     var urlAlt2 = evolucao.chain.evolves_to[0].evolves_to[0].species.url
 
-    if(urlAlt2.slice(42,44) > 9){var evolutionId2 = urlAlt2.slice(42,44)}
-    else{var evolutionId2 = urlAlt2.slice(42,43)}
+    let lastEvolution = urlAlt2.substring(urlAlt2.indexOf("cies") + 5).split("/")[0]
 
    
 
-    const pokeEvolutionUrl2 = evolutionId2 + ".png"
+    const pokeEvolutionUrl2 = lastEvolution + ".png"
     const srcEvolutionImg2 = metaEvolutionUrl + pokeEvolutionUrl2
     
     
@@ -99,15 +98,15 @@ if(!evolucao.chain.evolves_to[0].evolves_to[0]){
     <div className={styles.Evolution} data-testid="Evolution">         
       
           
-      <span className='span'>
-      <img alt= {evolucao.chain.species.name} src= {srcBaseImg} /> 
+     
+      <img className={styles.PokemonBase} alt= {evolucao.chain.species.name} src= {srcBaseImg} /> 
       <h3>{evolucao.chain.species.name}</h3>    
-      <img  alt= {evolucao.chain.evolves_to[0].species.name} src= {srcEvolutionImg} />
+      <img className={styles.PokemonMini}  alt= {evolucao.chain.evolves_to[0].species.name} src= {srcEvolutionImg} />
       <p>{evolucao.chain.evolves_to[0].species.name}</p>
-      <img  alt= {evolucao.chain.evolves_to[0].evolves_to[0].species.name} src= {srcEvolutionImg2} />      
+      <img className={styles.PokemonMini} alt= {evolucao.chain.evolves_to[0].evolves_to[0].species.name} src= {srcEvolutionImg2} />      
       <p>{evolution2}</p>
        
-    </span>
+   
     </div> )}
   
 }
