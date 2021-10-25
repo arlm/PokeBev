@@ -13,6 +13,8 @@ type BerryData = {
 
 interface Data  {
   natural_gift_power: number ,
+  smoothness: number,
+  growth_time: number,
   name: string,
   item: BerryData
 }
@@ -52,6 +54,12 @@ function Berry  (parametros: BerryData)  {
         <ul>
           <li>
             Natural Gift Power:{berries.natural_gift_power}
+          </li>
+          <li>
+            Smoothness:{berries.smoothness}
+          </li>
+          <li>
+            Growth Time:{berries.growth_time}
           </li>
         </ul>
         

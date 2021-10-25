@@ -23,7 +23,7 @@ function AppPokemon() {
   const [pokemons, setPokemons] = useState<PokemonData[]>([]);
 
   useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=3')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=8')
     .then((response) => response.json()) //espera a resposta
     .then((data) => setPokemons(data.results)); //espera o json ficar pronto
   }, []);
@@ -31,7 +31,7 @@ function AppPokemon() {
   //berries
   const [berries, setBerries] = useState<BerryData[]>([]);
   useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch('https://pokeapi.co/api/v2/berry?limit=3')
+    fetch('https://pokeapi.co/api/v2/berry?limit=8')
     .then((response) => response.json()) //espera a resposta
     .then((data) => setBerries(data.results)); //espera o json ficar pronto
   }, []);
