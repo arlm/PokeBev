@@ -38,7 +38,10 @@
     justify-content: center;
 }
 .card{
-    background-color:#EAEAEA 
+    background-color:#EAEAEA;
+    display: flex;
+    justify-content: center;
+    
 }
 
 .cardMenor{

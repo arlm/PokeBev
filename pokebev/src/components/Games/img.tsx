@@ -29,7 +29,7 @@ function ImgDoPokemon({pokeName}: {pokeName:string}) {
               >
                 <Card.Img  className={styles.bodyModal} variant="top" src={pokeDados.sprites.other["official-artwork"].front_default} /> {/**pegando a imagem da api*/}
                 <Card.Body>
-                  <Card.Title className="d-flex justify-content-center"> {pokeDados.name}</Card.Title>
+                  <Card.Title className="d-flex justify-content-center"> {pokeDados.name.toUpperCase()}</Card.Title>
                   <Card.Text>
                    Inserir aqui algum texto sobre os pokemons
                   </Card.Text>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PokeLoagind from "./loading.gif";
 import styles from "./Games.module.css";
 import { Card, ListGroup, Modal } from "react-bootstrap";
-import ImgDoPokemon from "./img"
+import ImgDoPokemon from "./img";
 
 function Games() {
   const [generations, setGenerations] = useState<any>();
@@ -45,11 +45,11 @@ function Games() {
             <Card.Body className={styles.card}>
               <ListGroup variant="flush">
                 {generations.map((gen: any) => (
-                  <ListGroup.Item
+                  <ListGroup.Item className={styles.card}
                     key={gen.name}
                     onClick={() => getGeneration(gen.name)}
                   >
-                    {gen.name}
+                    {gen.name.toUpperCase()}
                   </ListGroup.Item>
                 ))}
               </ListGroup>
@@ -66,21 +66,14 @@ function Games() {
       )}
 
       {generation && (
-      <div className={styles.bodyModal}>
-        <div className="container ">
-          <div className="row d-flex flex-row  ">
-            <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
-              <div className="d-flex flex-row align-items-center flex-wrap d-flex justify-content-evenly ">
-                {generation.map((pokemon: any) => (
-                  
-                  <ImgDoPokemon pokeName={pokemon.name} />
-
-                  
-                ))}
-              </div>
+        <div className={`container ${styles.bodyModal}`}>
+          <div className=" w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
+            <div className="align-items-center flex-wrap d-flex justify-content-evenly  ">
+              {generation.map((pokemon: any) => (
+                <ImgDoPokemon pokeName={pokemon.name} />
+              ))}
             </div>
           </div>
-        </div>
         </div>
       )}
     </div>
