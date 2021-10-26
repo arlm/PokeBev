@@ -1,11 +1,11 @@
 /* eslint-disable */
-import Games from './Games';
+import Version from './Version';
 
 export default {
-  title: "Games",
+  title: "Version",
 };
 
-export const Default = () => <Games />;
+export const Default = () => <Version />;
 
 Default.story = {
   name: 'default',

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import PokeLoagind from "./loading.gif";
-import styles from "./Games.module.css";
+import styles from "./Version.module.css";
 import { Card, ListGroup, Modal } from "react-bootstrap";
 import ImgDoPokemon from "../../CardPokemon/CardPokemon";
 
-function Games() {
+function Version() {
   const [generations, setGenerations] = useState<any>();
   const [generation, setGeneration] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -40,7 +40,7 @@ function Games() {
         <>
           <Card className="border border-5 border-secondary mb-5" style={{ width: "60rem" }}>
             <Card.Header className={styles.headerCard}>
-              Gerações dos Pokemons
+              Versão dos Pokemons
             </Card.Header>
             <Card.Body className={styles.card}>
               <ListGroup variant="flush">
@@ -80,4 +80,4 @@ function Games() {
   );
 }
 
-export default Games;
+export default Version;
