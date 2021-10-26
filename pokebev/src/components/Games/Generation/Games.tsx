@@ -30,8 +30,6 @@ function Games() {
     } catch (error) {}
   };
 
-
-
   return (
     <div className="d-flex d-flex justify-content-center mt-5 py-3 ">
       {generations && !generation && !loading && (
