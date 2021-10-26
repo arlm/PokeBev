@@ -36,7 +36,8 @@ const EvolutionCard = (props:{showModal:boolean})=>{
           <Modal.Title>Modal</Modal.Title>
         </Modal.Header>
         <Modal.Body><div className={styles.EvolutionCard} data-testid="EvolutionCard">
-    EvolutionCard Component</div></Modal.Body>
+    EvolutionCard Component
+    </div></Modal.Body>
       </Modal>
   
   );

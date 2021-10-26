@@ -6,6 +6,9 @@ type PokemonDataEvolution = {
   url: string
 }
 
+ function splitUrl(url: string) {
+   return url.substring(url.indexOf("cies") + 5).split("/")[0];
+ } 
 function Evolution(params: PokemonDataEvolution) {
   const [evolucao, setEvolucao] = useState<any>(undefined)
   const[openModal, setOpenModal] = useState<boolean>(false)
@@ -26,11 +29,9 @@ function Evolution(params: PokemonDataEvolution) {
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
     var urlAlt = evolucao.chain.evolves_to[0].species.url //Estou pegando a evolução do meu pokemon
 
-    let evolutionBaseId = pokeBaseUrl
-      .substring(pokeBaseUrl.indexOf("cies") + 5)
-      .split("/")[0]
+   
 
-    const srcBaseImg = metaBaseUrl + evolutionBaseId + ".svg"
+    const srcBaseImg = metaBaseUrl +splitUrl(pokeBaseUrl) + ".svg"
     
     //let trigger = evolucao.chain.evolves_to[0].evolution_details[0].trigger.name
     let minLevel = `Nível: ${evolucao.chain.evolves_to[0].evolution_details[0].min_level}`
@@ -48,13 +49,13 @@ function Evolution(params: PokemonDataEvolution) {
     let trigger2 =
       evolucao.chain.evolves_to[0].evolves_to[0]?.evolution_details[0].trigger
         .name*/
+     
 
 
 
-    const pokeEvolutionUrl =
-      urlAlt.substring(urlAlt.indexOf("cies") + 5).split("/")[0] + ".png"
-    const srcEvolutionImg = metaEvolutionUrl + pokeEvolutionUrl
-    // console.log(srcEvolutionImg)
+    
+    const srcEvolutionImg = metaEvolutionUrl + splitUrl(urlAlt) + ".png"
+     console.log(srcEvolutionImg)
 
     if (!evolucao.chain.evolves_to[0].evolves_to[0]) {
       return (
@@ -84,13 +85,11 @@ function Evolution(params: PokemonDataEvolution) {
         </div>
       );
     } else {
-      var urlAlt2 = evolucao.chain.evolves_to[0].evolves_to[0].species.url
+       var urlAlt2 = evolucao.chain.evolves_to[0].evolves_to[0].species.url;
+     
 
-      let lastEvolution = urlAlt2
-        .substring(urlAlt2.indexOf("cies") + 5)
-        .split("/")[0]
-
-      const pokeEvolutionUrl2 = lastEvolution + ".png"
+     
+      const pokeEvolutionUrl2 = splitUrl(urlAlt2) + ".png"
       const srcEvolutionImg2 = metaEvolutionUrl + pokeEvolutionUrl2
 
       return (
