@@ -1,5 +1,6 @@
 import styles from "./Evolution.module.css"
 import { useEffect, useState } from "react"
+import  EvolutionCard from "../EvolutionCard/EvolutionCard"
 
 type PokemonDataEvolution = {
   url: string
@@ -7,6 +8,7 @@ type PokemonDataEvolution = {
 
 function Evolution(params: PokemonDataEvolution) {
   const [evolucao, setEvolucao] = useState<any>(undefined)
+  const[openModal, setOpenModal] = useState<boolean>(false)
 
   useEffect(() => {
     fetch(params.url)
@@ -30,7 +32,7 @@ function Evolution(params: PokemonDataEvolution) {
 
     const srcBaseImg = metaBaseUrl + evolutionBaseId + ".svg"
     
-    let trigger = evolucao.chain.evolves_to[0].evolution_details[0].trigger.name
+    //let trigger = evolucao.chain.evolves_to[0].evolution_details[0].trigger.name
     let minLevel = `Nível: ${evolucao.chain.evolves_to[0].evolution_details[0].min_level}`
     let min_happiness= `Felicidade ${evolucao.chain.evolves_to[0].evolution_details[0].min_happiness}`
 
@@ -41,11 +43,13 @@ function Evolution(params: PokemonDataEvolution) {
       evolution2.push(evolucao.chain.evolves_to[0].evolves_to[0].species.name)
     }
 
-    let minLevel2 =
+    /*let minLevel2 =
      `Nível: ${evolucao.chain.evolves_to[0].evolves_to[0]?.evolution_details[0].min_level}`
     let trigger2 =
       evolucao.chain.evolves_to[0].evolves_to[0]?.evolution_details[0].trigger
-        .name
+        .name*/
+
+
 
     const pokeEvolutionUrl =
       urlAlt.substring(urlAlt.indexOf("cies") + 5).split("/")[0] + ".png"
@@ -54,25 +58,31 @@ function Evolution(params: PokemonDataEvolution) {
 
     if (!evolucao.chain.evolves_to[0].evolves_to[0]) {
       return (
-        <div className={styles.Evolution} data-testid="Evolution">
-          <img
-            className={styles.PokemonBase}
-            alt={evolucao.chain.species.name}
-            src={srcBaseImg}
-          />
-          <h3>{evolucao.chain.species.name}</h3>
-          <img
-            className={styles.PokemonMini}
-            alt={evolucao.chain.evolves_to[0].species.name}
-            src={srcEvolutionImg}
-          />
-          <span>{minLevel}</span>
-          <span>Trigger: {trigger}</span>
-          <p>{evolucao.chain.evolves_to[0].species.name}</p>
+        <div>
+          <div>
+            <div className={styles.Evolution} data-testid="Evolution">
+              <img
+                onClick={() => setOpenModal(true)}
+                className={styles.PokemonBase}
+                alt={evolucao.chain.species.name}
+                src={srcBaseImg}
+              />
+              <h3>{evolucao.chain.species.name}</h3>
+              {openModal && <EvolutionCard showModal/>}
+              <img
+                className={styles.PokemonMini}
+                alt={evolucao.chain.evolves_to[0].species.name}
+                src={srcEvolutionImg}
+              />
+              {/*  <span>{minLevel}</span>
+          <span>Trigger: {trigger}</span> */}
+              <p>{evolucao.chain.evolves_to[0].species.name}</p>
 
-          <p>{evolution2}</p>
+              <p>{evolution2}</p>
+            </div>
+          </div>
         </div>
-      )
+      );
     } else {
       var urlAlt2 = evolucao.chain.evolves_to[0].evolves_to[0].species.url
 
@@ -84,31 +94,37 @@ function Evolution(params: PokemonDataEvolution) {
       const srcEvolutionImg2 = metaEvolutionUrl + pokeEvolutionUrl2
 
       return (
-        <div className={styles.Evolution} data-testid="Evolution">
-          <img
-            className={styles.PokemonBase}
-            alt={evolucao.chain.species.name}
-            src={srcBaseImg}
-          />
-          <h3>{evolucao.chain.species.name}</h3>
-          <span>{minLevel}</span>
-          <span>Trigger: {trigger}</span>
-          <img
-            className={styles.PokemonMini}
-            alt={evolucao.chain.evolves_to[0].species.name}
-            src={srcEvolutionImg}
-          />
-          <span>{minLevel2}</span>
-          <span>Trigger: {trigger2}</span>
-          <p>{evolucao.chain.evolves_to[0].species.name}</p>
-          <img
-            className={styles.PokemonMini}
-            alt={evolucao.chain.evolves_to[0].evolves_to[0].species.name}
-            src={srcEvolutionImg2}
-          />
-          <p>{evolution2}</p>
+        <div>
+          <div>
+            <div className={styles.Evolution} data-testid="Evolution">
+              <img
+                onClick={() => setOpenModal(true)}
+                className={styles.PokemonBase}
+                alt={evolucao.chain.species.name}
+                src={srcBaseImg}
+              />
+              <h3>{evolucao.chain.species.name}</h3>
+              {openModal && <EvolutionCard showModal />}
+              {/* <span>{minLevel}</span> */}
+              {/* <span>Trigger: {trigger}</span> */}
+              <img
+                className={styles.PokemonMini}
+                alt={evolucao.chain.evolves_to[0].species.name}
+                src={srcEvolutionImg}
+              />
+              {/* <span>{minLevel2}</span> */}
+              {/*  <span>Trigger: {trigger2}</span> */}
+              <p>{evolucao.chain.evolves_to[0].species.name}</p>
+              <img
+                className={styles.PokemonMini}
+                alt={evolucao.chain.evolves_to[0].evolves_to[0].species.name}
+                src={srcEvolutionImg2}
+              />
+              <p>{evolution2}</p>
+            </div>
+          </div>
         </div>
-      )
+      );
     }
   }
 }
