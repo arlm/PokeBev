@@ -9,6 +9,7 @@ function AppPokemon() {
     <div >
       <Games />
       <Pokedexes />
+      <Version />
     </div>
   )
 }
