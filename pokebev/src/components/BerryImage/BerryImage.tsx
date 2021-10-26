@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import * as styles from './BerryImage.module.css';
+//import * as styles from './BerryImage.module.css';
 
 type BerryImageData = {
 

@@ -5,7 +5,7 @@ import BerryImage from '../BerryImage/BerryImage';
 import * as styles from './Berry.module.css';
 import ModalBerry from '../ModalBerry/ModalBerry';
 
-import {Button} from  'react-bootstrap';
+import {Button, Card} from  'react-bootstrap';
 
 
 
@@ -55,23 +55,35 @@ function Berry  (parametros: BerryData)  {
     <div>
 
       <div>
+      <Card>
         <BerryImage name={berries.item.name} url={berries.item.url} />
-        {berries.name}
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
-      </Button>
 
-      <ModalBerry
-        show={modalShow}
-        onHide={() => setModalShow(false)}
+        <Card.Body>
+          <Card.Text>
+          {berries.name.toUpperCase()}
+          </Card.Text>
+
+          <Button variant="primary" onClick={() => setModalShow(true)}>
+            Informações
+          </Button>
+
+          <ModalBerry
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+        </Card.Body>
+      </Card>
+       <br />
+        
       
-      />
+
+      
       </div>
 
-      <div className={styles.default.Berry} data-testid="Berry">
+      {/* <div className={styles.default.Berry} data-testid="Berry">
         
         {berries.name}
-        <BerryImage name={berries.item.name} url={berries.item.url} />
+       <BerryImage name={berries.item.name} url={berries.item.url} />
         <ul>
           <li>
             Natural Gift Power:{berries.natural_gift_power}
@@ -84,7 +96,7 @@ function Berry  (parametros: BerryData)  {
           </li>
         </ul>
         
-      </div>
+      </div> */}
       
     </div>  
   ) 

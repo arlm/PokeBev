@@ -1,6 +1,5 @@
 import  {useEffect, useState} from 'react'
 import './App.css';
-import Pokemon from './components/Pokemon/Pokemon';
 import Berry from  './components/Berry/Berry';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,10 +21,12 @@ function AppPokemon() {
   //berries
   const [berries, setBerries] = useState<BerryData[]>([]);
   useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch('https://pokeapi.co/api/v2/berry?limit=8')
+    fetch('https://pokeapi.co/api/v2/berry?limit=8000')
     .then((response) => response.json()) //espera a resposta
     .then((data) => setBerries(data.results)); //espera o json ficar pronto
   }, []);
+
+  
 
   // //contests
   // const [contests, setContests] = useState<PokemonData[]>([]);
