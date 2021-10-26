@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PokeLoagind from "./loading.gif";
 import styles from "./Pokedexes.module.css";
-import { Card, ListGroup, Modal } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 import ImgDoPokemon from "../../CardPokemon/CardPokemon";
 
 function Pokedexes() {
@@ -26,8 +26,8 @@ function Pokedexes() {
         `https://pokeapi.co/api/v2/pokedex/${namePokedex}`
       );
       const objPokedex = await resposta.json();
-      setPokedex(objPokedex);
-      console.log(objPokedex, "segundo")
+      setPokedex(objPokedex.pokemon_entries);
+      console.log(pokedex, "poke")
       setLoading(false);
     } catch (error) {}
   };
@@ -68,7 +68,7 @@ function Pokedexes() {
           <div className=" w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
             <div className="align-items-center flex-wrap d-flex justify-content-evenly  ">
               {pokedex.map((pokemon: any) => (
-                <ImgDoPokemon pokeName={pokemon.pokemons_entries.pokemon_species.toLowerCase()} />
+                <ImgDoPokemon pokeName={pokemon.pokemon_species.name} />
               ))}
             </div>
           </div>
