@@ -1,8 +1,7 @@
 import {useEffect, useState} from 'react';
 import BerryImage from '../BerryImage/BerryImage';
 import * as styles from './Berry.module.css';
-
-
+import ModalBerry from '../ModalBerry/ModalBerry'
 
 type BerryData = {
  
@@ -22,6 +21,7 @@ interface Data  {
 function Berry  (parametros: BerryData)  {
 
    const [berries, setBerry] = useState<Data | undefined>(undefined);
+   const [modalShow, setModalShow] = React.useState(false);
    
 
   useEffect(() => { //faz a chamada, mas nao tem resposta
@@ -47,10 +47,15 @@ function Berry  (parametros: BerryData)  {
     
   return (
     <div>
+       <ModalBerry
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <div className={styles.default.Berry} data-testid="Berry">
-        
-        {berries.name}
+      
+        {/* {berries.name}
         <BerryImage name={berries.item.name} url={berries.item.url} />
+        
         <ul>
           <li>
             Natural Gift Power:{berries.natural_gift_power}
@@ -61,7 +66,7 @@ function Berry  (parametros: BerryData)  {
           <li>
             Growth Time:{berries.growth_time}
           </li>
-        </ul>
+        </ul> */}
         
       </div>
       
