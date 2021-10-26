@@ -23,20 +23,19 @@ function ImgDoPokemon({pokeName}: {pokeName:string}) {
             <>
             { pokeDados && (
                 <Card
-                className="border border-5 border-secondary"
+                className="border border-5 border-secondary mb-5"
                 key={pokeDados.name}
                 style={{ width: "18rem" }}
               >
-                <Card.Img variant="top" src={pokeDados.sprites.other["official-artwork"].front_default} /> {/**pegando a imagem da api*/}
+                <Card.Img  className={styles.bodyModal} variant="top" src={pokeDados.sprites.other["official-artwork"].front_default} /> {/**pegando a imagem da api*/}
                 <Card.Body>
-                  <Card.Title className={styles.bodyModal}> {pokeDados.name}</Card.Title>
+                  <Card.Title className="d-flex justify-content-center"> {pokeDados.name}</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                   Inserir aqui algum texto sobre os pokemons
                   </Card.Text>
                 </Card.Body>
               </Card>
-            )};
+            )}
             
           </>
 

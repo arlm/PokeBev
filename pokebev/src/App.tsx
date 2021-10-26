@@ -3,7 +3,7 @@ import Games from './components/Games/Games';
 
 function AppPokemon() {
   return (
-    <div>
+    <div >
       <Games />
     </div>
   )

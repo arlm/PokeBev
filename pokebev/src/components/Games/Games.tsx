@@ -35,7 +35,7 @@ function Games() {
   };
 
   return (
-    <div className={styles.Games}>
+    <div className="d-flex d-flex justify-content-center mt-5 py-3">
       {generations && !generation && !loading && (
         <>
           <Card style={{ width: "60rem" }}>
@@ -66,9 +66,10 @@ function Games() {
       )}
 
       {generation && (
-        <div className="container mb-5">
-          <div className="row d-flex flex-row py-5 ">
-            <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between ">
+      <div className={styles.bodyModal}>
+        <div className="container ">
+          <div className="row d-flex flex-row  ">
+            <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
               <div className="d-flex flex-row align-items-center flex-wrap d-flex justify-content-evenly ">
                 {generation.map((pokemon: any) => (
                   
@@ -79,6 +80,7 @@ function Games() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       )}
     </div>
