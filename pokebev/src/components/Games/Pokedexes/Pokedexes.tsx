@@ -36,7 +36,7 @@ function Pokedexes() {
         <>
           <Card className="border border-5 border-secondary mb-5" style={{ width: "60rem" }}>
             <Card.Header className={styles.headerCard}>
-              Gerações dos Pokemons
+              Pokedex
             </Card.Header>
             <Card.Body className={styles.card}>
               <ListGroup variant="flush">
