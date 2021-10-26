@@ -112,11 +112,5 @@ function Evolution(params: PokemonDataEvolution) {
     }
   }
 }
-// const Evolution = (params: PokemonDataEvolution) => (
-
-//   <div className={styles.Evolution} data-testid="Evolution">
-//     Evolution Component
-//   </div>
-// );
 
 export default Evolution

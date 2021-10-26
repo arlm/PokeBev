@@ -6,23 +6,21 @@
     width: 370px;
     height:600px;
   
-   border: 1px solid ;
-   border-radius: 10%;
-   border-bottom: solid;
+    border: 1px solid ;
+    border-radius: 10%;
+    border-bottom: solid;
 }
 .PokemonBase{
-   width: fit-content;
+    width: fit-content;
     height: 130px;
 }
 
-.PokemonMini{
-     
+.PokemonMini{   
     width: fit-content;
-     height: 90px;
+    height: 90px;
  }
 
 p{
-    
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: medium;
     color: rgb(10, 10, 10);
