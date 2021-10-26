@@ -26,7 +26,6 @@ function Games() {
       );
       const objGeneration = await resposta.json();
       setGeneration(objGeneration.pokemon_species);
-      console.log(generation, "gene")
       setLoading(false);
     } catch (error) {}
   };

@@ -13,7 +13,6 @@ function Pokedexes() {
     const pegaPokedexes = async () => {
       const resposta = await fetch("https://pokeapi.co/api/v2/pokedex");
       const objPokedexes = await resposta.json();
-      console.log(objPokedexes, "primeiro")
       setPokedexes(objPokedexes.results);
     };
     pegaPokedexes();
@@ -27,7 +26,6 @@ function Pokedexes() {
       );
       const objPokedex = await resposta.json();
       setPokedex(objPokedex.pokemon_entries);
-      console.log(pokedex, "poke")
       setLoading(false);
     } catch (error) {}
   };
