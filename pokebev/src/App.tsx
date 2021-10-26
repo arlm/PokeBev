@@ -1,5 +1,5 @@
 import './App.css';
-import Games from './components/Games/Games';
+import Games from './components/Games/Generation/Games';
 
 function AppPokemon() {
   return (

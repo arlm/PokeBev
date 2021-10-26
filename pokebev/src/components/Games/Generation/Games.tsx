@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PokeLoagind from "./loading.gif";
 import styles from "./Games.module.css";
 import { Card, ListGroup, Modal } from "react-bootstrap";
-import ImgDoPokemon from "./img";
+import ImgDoPokemon from "../../CardPokemon/CardPokemon";
 
 function Games() {
   const [generations, setGenerations] = useState<any>();
@@ -35,10 +35,10 @@ function Games() {
   };
 
   return (
-    <div className="d-flex d-flex justify-content-center mt-5 py-3">
+    <div className="d-flex d-flex justify-content-center mt-5 py-3 ">
       {generations && !generation && !loading && (
         <>
-          <Card style={{ width: "60rem" }}>
+          <Card className="border border-5 border-secondary mb-5" style={{ width: "60rem" }}>
             <Card.Header className={styles.headerCard}>
               Gerações dos Pokemons
             </Card.Header>
