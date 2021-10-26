@@ -78,4 +78,4 @@ function Pokedexes() {
   );
 }
 
-export default Pokedexes;
+export default Pokedexes
