@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PokeLoagind from "./loading.gif";
 import styles from "./Games.module.css";
-import { Card, ListGroup, Modal } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 import ImgDoPokemon from "../../CardPokemon/CardPokemon";
 
 function Games() {
@@ -26,13 +26,12 @@ function Games() {
       );
       const objGeneration = await resposta.json();
       setGeneration(objGeneration.pokemon_species);
+      console.log(generation, "gene")
       setLoading(false);
     } catch (error) {}
   };
 
-  const closeModal = () => {
-    setGeneration(null);
-  };
+
 
   return (
     <div className="d-flex d-flex justify-content-center mt-5 py-3 ">
