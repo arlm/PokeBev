@@ -2,6 +2,7 @@ import styles from "./Evolution.module.css"
 import { useEffect, useState } from "react"
 import  EvolutionCard from "../EvolutionCard/EvolutionCard"
 import Encounter from "../Encounter/Encounter";
+import { Alert } from "react-bootstrap";
 
 type PokemonDataEvolution = {
   url: string
@@ -29,7 +30,7 @@ function Evolution(params: PokemonDataEvolution) {
     const pokeBaseUrl = evolucao.chain.species.url
     const metaEvolutionUrl =
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
-    var urlAlt = evolucao.chain.evolves_to[0].species.url //Estou pegando a evolução do meu pokemon
+    var urlAlt = evolucao.chain.evolves_to[0]?.species.url //Estou pegando a evolução do meu pokemon
 
    
 
@@ -37,20 +38,18 @@ function Evolution(params: PokemonDataEvolution) {
    
     
     const pokeNameBase = evolucao.chain.species.name.toUpperCase();
-    const chainSecound = evolucao.chain.evolves_to[0].evolves_to[0];
-    const pokeNameSecound = evolucao.chain.evolves_to[0].evolves_to[0]?.species.name;
-    const pokeNameFirst = evolucao.chain.evolves_to[0].species.name;
+    const chainSecound = evolucao.chain.evolves_to[0]?.evolves_to[0];
+    const pokeNameSecound = evolucao.chain.evolves_to[0]?.evolves_to[0]?.species.name;
+    const pokeNameFirst = evolucao.chain.evolves_to[0]?.species.name;
     
 
     let evolution2 = []
-    if (!chainSecound) {
-      evolution2.push("não há mais evoluções")
-    } else {
+    if (chainSecound) {      
       evolution2.push(pokeNameSecound)
     }        
 
     
-    const srcEvolutionImg = metaEvolutionUrl + splitUrl(urlAlt) + ".png"
+    const srcEvolutionImg = urlAlt ?(metaEvolutionUrl + splitUrl(urlAlt) + ".png"): undefined;
      
 
     if (!chainSecound) {
@@ -86,11 +85,11 @@ function Evolution(params: PokemonDataEvolution) {
         </div>
       );
     } else {
-       var urlAlt2 = evolucao.chain.evolves_to[0].evolves_to[0].species.url;
+       var urlAlt2 = evolucao.chain.evolves_to[0]?.evolves_to[0]?.species.url;
      
 
      
-      const pokeEvolutionUrl2 = splitUrl(urlAlt2) + ".png"
+      const pokeEvolutionUrl2 = urlAlt2 ?(splitUrl(urlAlt2) + ".png"): undefined;
       const srcEvolutionImg2 = metaEvolutionUrl + pokeEvolutionUrl2
 
       return (

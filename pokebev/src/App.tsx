@@ -15,9 +15,9 @@ function AppPokemon() {
 
   useEffect(() => {
     //faz a chamada, mas nao tem resposta
-    fetch("https://pokeapi.co/api/v2/evolution-chain/")
+    fetch("https://pokeapi.co/api/v2/evolution-chain/?offset=100&limit=20")
       .then((response) => response.json()) //espera a resposta
-      .then((data) => setEvolution(data.results)) //espera o json ficar pronto
+      .then((data) => setEvolution(data.results)); //espera o json ficar pronto
   }, [])
 
   //realizar uma nova requisição para pegar os sprites(imagens direto da api)
