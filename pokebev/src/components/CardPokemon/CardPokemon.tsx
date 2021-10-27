@@ -26,10 +26,15 @@ function ImgDoPokemon({
       const arrVersions: string[] = arrayIndices.map(
         ({ version }: any) => version.name
       );
-
-      if (arrVersions.includes(filtro)) {
-        // condicional criada p filtro dos pokemons por versao (ex.: red)
-
+      if (filtro && filtro.length) {
+        for (const item of filtro) {
+          if (arrVersions.includes(item)) {
+            // condicional criada p filtro dos pokemons por versao (ex.: red)
+            setMostrar(true);
+            break
+          }
+        }
+      } else {
         setMostrar(true);
       }
 
@@ -40,7 +45,7 @@ function ImgDoPokemon({
 
   return (
     <>
-      {(mostrar && pokeDados) && (
+      {mostrar && pokeDados && (
         <Card
           className="border border-5 border-secondary mb-5"
           key={pokeDados.name}

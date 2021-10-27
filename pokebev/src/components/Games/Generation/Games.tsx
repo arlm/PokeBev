@@ -63,7 +63,7 @@ function Games() {
       )}
 
       {generation && (
-        <div className={`container ${styles.bodyModal}`}>
+        <div onClick={() => setGeneration(null)} className={`container ${styles.bodyModal}`}>
           <div className=" w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
             <div className="align-items-center flex-wrap d-flex justify-content-evenly  ">
               {generation.map((pokemon: any) => (
