@@ -1,5 +1,5 @@
 .Berry {
-    background-color: rgba(199, 199, 199, 0.322);
+    background-color: rgba(0, 0, 0, 0.322);
     width: 150px;
     height: 300px;
     padding: 10px;
@@ -7,4 +7,7 @@
     font-size: large;
     border-radius: 20o;
 
+}
+.BerryImage {
+  
 }

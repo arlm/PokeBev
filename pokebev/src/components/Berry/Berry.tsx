@@ -66,7 +66,7 @@ function Berry  (parametros: BerryData)  {
       
       </div>
 
-      {/* <div className={styles.default.Berry} data-testid="Berry">
+     {/* /* { <div className={styles.default.Berry} data-testid="Berry">
         
         {berries.name}
        <BerryImage name={berries.item.name} url={berries.item.url} />
@@ -82,9 +82,9 @@ function Berry  (parametros: BerryData)  {
           </li>
         </ul>
         
-      </div> */}
+      </div> } */}
       
-    </div>  
+    </div> 
   ) 
   }
 }

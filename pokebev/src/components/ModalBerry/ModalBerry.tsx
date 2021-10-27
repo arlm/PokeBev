@@ -3,6 +3,7 @@ import styles from './ModalBerry.module.css';
 import {Modal, Button, } from  'react-bootstrap';
 import {useEffect, useState} from 'react';
 
+
 interface ModalBerryData  {
  
   name: string,
@@ -54,9 +55,9 @@ function ModalBerry  (props: any, parametros:ModalBerryData ) {
         <Modal.Body>
           <h4>Caracteríticas</h4>
           <p>
-          Natural Gift Power: {parametros.natural_gift_power} <br></br>
-          Smoothness: {parametros.smoothness}'<br></br>
-          Growth Time: {parametros.growth_time}'<br></br>
+          Natural Gift Power: {dataBerry.natural_gift_power} <br></br>
+          Smoothness: {dataBerry.smoothness}<br></br>
+          Growth Time: {dataBerry.growth_time}<br></br>
           </p>
         </Modal.Body>
         <Modal.Footer>

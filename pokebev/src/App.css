@@ -1,3 +1,6 @@
+body{
+  background-color: black;
+}
 .Pokemon-List {
   display: flex;
   align-items: center;
@@ -16,7 +19,6 @@
   width: 75vw;
   flex-wrap: wrap;
   margin: 10px;
-  
 
 }
 
