@@ -28,12 +28,46 @@ const EvolutionCard = (props:{showModal:boolean, pokeName?:string, objetoEvoluca
       setShow(false);
     }
   }, []);
+  
 
   const levelBase = props.objetoEvolucao.chain.evolves_to[0].evolution_details[0].trigger
       .name;
 
+  const evoDetailsBase =  props.objetoEvolucao.chain.evolves_to[0].evolution_details[0]
+
+  const listTopics = [
+    evoDetailsBase.gender,
+    evoDetailsBase.held_item,
+    evoDetailsBase.item,
+    evoDetailsBase.known_move,
+    evoDetailsBase.known_move_type,
+    evoDetailsBase.location,
+    evoDetailsBase.min_affection,
+    evoDetailsBase.min_beauty,
+    evoDetailsBase.min_happiness,
+    evoDetailsBase.min_level,
+    evoDetailsBase.needs_overworld_rain,
+    evoDetailsBase.party_species,
+    evoDetailsBase.party_type,
+    evoDetailsBase.relative_physical_stats,
+    evoDetailsBase.time_of_day,
+    evoDetailsBase.trade_species,
+  ];
+
+ 
+
+  function baseEvoDetails(){
+    let list = []
+    for (let i = 0; i < listTopics.length; i++) {
+      if(listTopics[i]){
+        list.push(`${Object.keys(evoDetailsBase)[i]}:${listTopics[i]}`);
+      }      
+    }
+    return list
+  }; 
+
   function showIf(){
-    if(levelBase){return levelBase}
+  if(levelBase){return levelBase}  
     
   }
 
@@ -46,13 +80,10 @@ const EvolutionCard = (props:{showModal:boolean, pokeName?:string, objetoEvoluca
       </Modal.Header>
       <Modal.Body>
         <div className={styles.EvolutionCard} data-testid="EvolutionCard">
-          <p>
-            
-            
-            {
-              showIf()
-            }
-          </p>
+          {props.pokeName}
+          <p>{showIf()}</p>
+          <p>{baseEvoDetails()}</p>
+          
         </div>
       </Modal.Body>
     </Modal>
