@@ -5,15 +5,16 @@ import { Card, ListGroup } from "react-bootstrap";
 import ImgDoPokemon from "../../CardPokemon/CardPokemon";
 
 function Games() {
-  const [generations, setGenerations] = useState<any>();
+  const [generations, setGenerations] = useState<string[]>();
   const [generation, setGeneration] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const pegaGeracoes = async () => {
       const resposta = await fetch("https://pokeapi.co/api/v2/generation");
-      const objGenerations = await resposta.json();
-      setGenerations(objGenerations.results);
+      const { results } = await resposta.json();
+      const ArrGenerations: string[] = results.map(({ name }: { name: string }) => name);
+      setGenerations(ArrGenerations);
     };
     pegaGeracoes();
   }, []);
@@ -27,7 +28,7 @@ function Games() {
       const objGeneration = await resposta.json();
       setGeneration(objGeneration.pokemon_species);
       setLoading(false);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (
@@ -40,12 +41,12 @@ function Games() {
             </Card.Header>
             <Card.Body className={styles.card}>
               <ListGroup variant="flush">
-                {generations.map((gen: any) => (
+                {generations.map((gen: string) => (
                   <ListGroup.Item className={styles.card}
-                    key={gen.name}
-                    onClick={() => getGeneration(gen.name)}
+                    key={gen}
+                    onClick={() => getGeneration(gen)}
                   >
-                    {gen.name.toUpperCase()}
+                    {gen.toUpperCase()}
                   </ListGroup.Item>
                 ))}
               </ListGroup>
