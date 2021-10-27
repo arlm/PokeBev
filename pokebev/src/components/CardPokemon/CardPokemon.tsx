@@ -2,8 +2,9 @@ import { ReactElement, useEffect, useState } from "react";
 import styles from "./CardPokemon.module.css";
 import { Card, ListGroup } from "react-bootstrap";
 
-function ImgDoPokemon({ pokeName }: { pokeName: string }) {
+function ImgDoPokemon({ pokeName, filtro }: { pokeName: string, filtro?: string }) {
   const [pokeDados, setPokeDados] = useState<any>();
+  const [mostrar, setMostrar]  = useState<Boolean>(false);
   /**como cada card ta recebendo so o nome, vamos passar isso como props para nosso novo componente, cada card vai fazer o fetch usando o nome q recebemos. Então a cada pokemon ele vai fazer um fetch, para isso precisamos de useEffect*/
   useEffect(() => {
     const pegaGeracoes = async () => {
@@ -13,7 +14,10 @@ function ImgDoPokemon({ pokeName }: { pokeName: string }) {
       const objPokemon =
         await resposta.json(); /**transformando em obj legivel */
       //   const appArr: String[] = objGenerations.results.map((gen: { name: String }) => gen.name)
-
+      if (filtro === objPokemon.game_indices[0].version.name) {
+        setMostrar(true)
+      } // condicional criada p filtro dos pokemons por versao (ex.: red)
+      
       setPokeDados(objPokemon);
       console.log(objPokemon);
     };
@@ -22,7 +26,7 @@ function ImgDoPokemon({ pokeName }: { pokeName: string }) {
 
   return (
     <>
-      {pokeDados && (
+      {(mostrar && pokeDados) && (
         <Card
           className="border border-5 border-secondary mb-5"
           key={pokeDados.name}
