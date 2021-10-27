@@ -1,6 +1,7 @@
 import styles from "./Evolution.module.css"
 import { useEffect, useState } from "react"
 import  EvolutionCard from "../EvolutionCard/EvolutionCard"
+import Encounter from "../Encounter/Encounter";
 
 type PokemonDataEvolution = {
   url: string
