@@ -1,7 +1,9 @@
+import styles from './Location.module.css';
 import { useState } from "react";
 import { Button, Modal, ModalTitle, ModalBody } from "react-bootstrap";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
 import Location from "./Location";
+import Pokebola from './pokebola.gif';
 
 export default function ScreenLocations() {
     const [show, setShow] = useState(false);
@@ -13,11 +15,11 @@ export default function ScreenLocations() {
 
       <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
           <ModalHeader closeButton>
-              <ModalTitle> Locations </ModalTitle>
+              <ModalTitle><img src={Pokebola} width={30}/> Locations </ModalTitle>
           </ModalHeader>
-          <ModalBody>
+          <ModalBody className={styles.pokemap}>
             <p>
-                <Location/>
+                <Location />
             </p>
           </ModalBody>
       </Modal>

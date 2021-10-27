@@ -1,12 +1,3 @@
-.Pokemon-List {
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
-  background-color: tomato;
-  width: 75vw;
-  flex-wrap: wrap;
-  margin-top: 2vw;
-}
 
 
 

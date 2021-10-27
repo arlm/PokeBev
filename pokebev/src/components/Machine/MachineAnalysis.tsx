@@ -1,5 +1,7 @@
+import styles from './Machine.module.css';
 import { url } from "inspector";
 import React, { useEffect, useState } from "react";
+import TM from './tm.png';
 
 interface MachineData {
   url: string,
@@ -19,10 +21,10 @@ export default function MachineAnalysis(parametros: MachineData) {
   console.log(machines);
 
   return (
-    <li> <p> Machine ID: {machines?.id} <br/>
-        Name: {machines?.item.name ?? "ERROR"} <br/>
-        Move: {machines?.move.name ?? "ERROR"} <br/>
-        Version Group: {machines?.version_group.name ?? "ERROR"} </p>
+    <li className={styles.listaMachine}> <p><img src={TM} width={30}/> Nome: {machines?.item.name ?? "ERROR"} <br/>
+        Movimento: {machines?.move.name ?? "ERROR"} <br/>
+        Versão do Game: {machines?.version_group.name ?? "ERROR"} </p> 
+    <hr />          
     </li>
   );
 }

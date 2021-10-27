@@ -2,12 +2,6 @@ import React from 'react';
 import styles from './Location.module.css';
 import { useState, useEffect } from "react";
 
-interface LocationType {
-  name: any,
-  region: any,
-  areas: any
-}
-
 export default function Location(){
   const [name, setName] = useState<any>('')
   const [locations, setLocations] = useState<any>(undefined)
@@ -36,7 +30,7 @@ export default function Location(){
     <>
     
     <div>
-      <input placeholder="Escolha uma location." list="pokemon" required minLength={1} value={name} onChange={e => setName(e.currentTarget.value)}/>
+      <input placeholder="Selecione uma location." list="pokemon" required minLength={1} value={name} onChange={e => setName(e.currentTarget.value)}/>
       <datalist id="pokemon"> {Object.keys(lista).length > 0 && lista.map((s: any) => <option value={s.name} key={s.name} />)}
       </datalist>
       <button onClick={ obterLocation }>Obter Location</button>

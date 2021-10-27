@@ -1,1 +1,9 @@
-.Machine {}
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.listaMachine {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    /* text-align: center; */
+    list-style: none;
+    width: 250px;
+}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Modal, ModalTitle, ModalBody } from "react-bootstrap";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
 import Machine from "./Machine";
+import Pokebola from './pokebola.gif';
 
 
 export default function ScreenMachines() {
@@ -14,7 +15,7 @@ export default function ScreenMachines() {
 
       <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
           <ModalHeader closeButton>
-              <ModalTitle> Machines </ModalTitle>
+              <ModalTitle><img src={Pokebola} width={30}/> Machines </ModalTitle>
           </ModalHeader>
           <ModalBody>
               <Machine />
