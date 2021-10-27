@@ -21,11 +21,11 @@ export default function MachineAnalysis(parametros: MachineData) {
   console.log(machines);
 
   return (
-    <li className={styles.listaMachine}> <p><img src={TM} width={30}/> Nome: {machines?.item.name ?? "ERROR"} <br/>
+    <div className={styles.listaMachine}> <p><img src={TM} width={30}/> Nome: {machines?.item.name ?? "ERROR"} <br/>
         Movimento: {machines?.move.name ?? "ERROR"} <br/>
         Versão do Game: {machines?.version_group.name ?? "ERROR"} </p> 
     <hr />          
-    </li>
+    </div>
   );
 }
 

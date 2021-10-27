@@ -12,7 +12,7 @@ export default function Machine() {
   const [machines, setMachines] = useState<MachineType[]>([]);
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/machine')
+    fetch('https://pokeapi.co/api/v2/machine?limit=1000')
       .then((response) => response.json())
       .then((data) => setMachines(data.results));
   }, []);
