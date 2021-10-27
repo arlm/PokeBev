@@ -1,10 +1,41 @@
-import React from 'react';
-import styles from './Encounter.module.css';
+import styles from "./Encounter.module.css"
+import { useEffect, useState } from "react"
 
-const Encounter = () => (
-  <div className={styles.Encounter} data-testid="Encounter">
-    Encounter Component
-  </div>
-);
+interface EncounterType {
+  name: any
+}
 
-export default Encounter;
+function Encounter() {
+  // const [name, setName] = useState<any>("")
+  // const [lista, setLista] = useState<any>([])
+  const [encounter, setEncounter] = useState<EncounterType[]>([])
+
+  useEffect(() => {
+    const pegaEncounters = async () => {
+      const resposta = await fetch(
+        "https://pokeapi.co/api/v2/encounter-method/"
+      )
+      const objtEncounters = await resposta.json()
+      setEncounter(objtEncounters.results)
+    }
+    pegaEncounters()
+  }, [])
+
+ 
+  return (
+    <div className={styles.Encounter} data-testid="Encounter">
+      <div>
+        {encounter && (
+          <>
+            <h3> Lista de encounters: </h3>
+            {encounter.map((enc) => (
+              <p>{enc.name}</p>
+            ))}
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default Encounter
