@@ -32,11 +32,8 @@ function Evolution(params: PokemonDataEvolution) {
 
    
 
-    const srcBaseImg = metaBaseUrl +splitUrl(pokeBaseUrl) + ".svg"
-    
-    //let trigger = evolucao.chain.evolves_to[0].evolution_details[0].trigger.name
-    let minLevel = `Nível: ${evolucao.chain.evolves_to[0].evolution_details[0].min_level}`
-    let min_happiness= `Felicidade ${evolucao.chain.evolves_to[0].evolution_details[0].min_happiness}`
+    const srcBaseImg = metaBaseUrl +splitUrl(pokeBaseUrl) + ".svg"    
+   
     
     const pokeNameBase = evolucao.chain.species.name.toUpperCase();
     const chainSecound = evolucao.chain.evolves_to[0].evolves_to[0];
@@ -61,7 +58,7 @@ function Evolution(params: PokemonDataEvolution) {
           <div>
             <div className={styles.Evolution} data-testid="Evolution">
               <img
-                onClick={() => setOpenModal(true)}
+                onClick={() => setOpenModal(!openModal)}
                 className={styles.PokemonBase}
                 alt={pokeNameBase}
                 src={srcBaseImg}
@@ -100,7 +97,7 @@ function Evolution(params: PokemonDataEvolution) {
           <div>
             <div className={styles.Evolution} data-testid="Evolution">
               <img
-                onClick={() => setOpenModal(true)}
+                onClick={() => setOpenModal(!openModal)}
                 className={styles.PokemonBase}
                 alt={pokeNameBase}
                 src={srcBaseImg}

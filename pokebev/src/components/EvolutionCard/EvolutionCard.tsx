@@ -31,16 +31,20 @@ const EvolutionCard = (props: {
       handleShow();
     } else {
       setShow(false);
+      
     }
   }, []);
 
   // pegando dados do pokemon Base
-
-  const levelBase =
-    props.objetoEvolucao.chain.evolves_to[0].evolution_details[0].trigger.name;
+  
+  
+    const levelBase =
+      props.objetoEvolucao.chain.evolves_to[0].evolution_details[0].trigger
+        .name;
 
   const evoDetailsBase =
     props.objetoEvolucao.chain.evolves_to[0].evolution_details[0];
+  
 
   const listTopics = [
     evoDetailsBase.gender,
@@ -61,6 +65,7 @@ const EvolutionCard = (props: {
     evoDetailsBase.trade_species,
   ];
 
+
   function baseEvoDetails() {
     let list = [];
     for (let i = 0; i < listTopics.length; i++) {
@@ -77,11 +82,6 @@ const EvolutionCard = (props: {
     }
   }
 
-  function showIf() {
-    if (levelBase) {
-      return levelBase;
-    }
-  }
 
   //pegando dados da primeira evolução
 
@@ -91,6 +91,9 @@ const EvolutionCard = (props: {
 
   const detailsFirstEvo =
     props.objetoEvolucao.chain.evolves_to[0].evolves_to[0].evolution_details[0];
+
+
+
 
   const listFirstTopics = [
     detailsFirstEvo.gender,
@@ -111,6 +114,7 @@ const EvolutionCard = (props: {
     detailsFirstEvo.trade_species,
   ];
 
+
   function firstEvoDetails() {
     let listFirst = [];
     for (let i = 0; i < listFirstTopics.length; i++) {
@@ -127,12 +131,9 @@ const EvolutionCard = (props: {
     }
   }
 
-  function showFirstIf() {
-    if (levelFirstEvo) {
-      return levelFirstEvo;
-    }
-  }
+ 
 
+  
   return (
     <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
       <Modal.Header closeButton>
@@ -141,18 +142,19 @@ const EvolutionCard = (props: {
       <Modal.Body>
         <div className={styles.EvolutionCard} data-testid="EvolutionCard">
           {props.pokeName}
-          <p>{showIf()}</p>
+          <p>{levelBase}</p>
           <p>{baseEvoDetails()}</p>
         </div>
 
         <div className={styles.EvolutionCard} data-testid="EvolutionCard">
           {props.pokeFirst}
-          <p>{showFirstIf()}</p>
+          <p>{levelFirstEvo}</p>
           <p>{firstEvoDetails()}</p>
         </div>
       </Modal.Body>
     </Modal>
   );
+  
 };;
 
 export default EvolutionCard;
