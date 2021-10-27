@@ -55,5 +55,12 @@
   .container{
       background-color:#D8BFD8 ;
   }
-  
+  .FigureCaption {
+      color: black;
+      font-size: medium;
+  }
+
+  .finalFigure {
+      margin-left: 2cm;
+  }
    

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import PokeLoagind from "./loading.gif";
 import styles from "./Version.module.css";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, Figure, ListGroup } from "react-bootstrap";
 import ImgDoPokemon from "../../CardPokemon/CardPokemon";
+import FigureCaption from 'react-bootstrap/FigureCaption'
 
 function Version() {
   const [versions, setVersions] = useState<any>();
@@ -35,11 +36,11 @@ function Version() {
       const objVersion = await resposta.json();
       setVersion(objVersion.results.reverse());
       setLoading(false);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (
-    <div className="d-flex d-flex justify-content-center mt-5 py-3 ">
+    <div className="text-center">
       {versions && !version && !loading && (
         <>
           <Card
@@ -89,14 +90,24 @@ function Version() {
       )}
 
       {naoTem && (
-        <div
-          onClick={() => {setNaoTem(false); setVersion(null)} }
-        >
-          <div className=" w-100 d-flex justify-content-center ">
-            
-              <h1>NÃO HÁ POKEMONS PARA ESTA LISTA !!</h1>
-          
-          </div>
+        <div onClick={() => { setNaoTem(false); setVersion(null) }}>
+          <Figure>
+            <Figure.Image
+              width={171}
+              height={180}
+              alt="pokemon colisseum"
+              src="https://cdn.discordapp.com/attachments/899759071056515082/903011660590088202/220px-PokC3A9mon_Colosseum_cover.png"
+            />
+            <Figure.Image className={styles.finalFigure}
+              width={171}
+              height={180}
+              alt="pokemon xd"
+              src="https://cdn.discordapp.com/attachments/899759071056515082/903011605393080360/220px-PokC3A9mon_XD_Gale_of_Darkness_cover.png"
+            />
+            <Figure.Caption className={styles.FigureCaption}>
+              NÃO HÁ POKEMONS NOVOS NESSAS VERSÕES !!
+            </Figure.Caption>
+          </Figure>
         </div>
       )}
     </div>
