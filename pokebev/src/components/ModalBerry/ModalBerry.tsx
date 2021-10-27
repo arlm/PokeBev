@@ -3,7 +3,7 @@ import styles from './ModalBerry.module.css';
 import {Modal, Button, } from  'react-bootstrap';
 import {useEffect, useState} from 'react';
 
-type BerryData = {
+interface ModalBerryData  {
  
   name: string,
   url: string,
@@ -13,25 +13,17 @@ type BerryData = {
  
 }
 
-// interface Data  {
-//   natural_gift_power: number ,
-//   smoothness: number,
-//   growth_time: number,
-//   name: string,
-//   item: BerryData
-// }
-
-function ModalBerry  (props: any, parametros:BerryData ) {
+function ModalBerry  (props: any, parametros:ModalBerryData ) {
 
   
-  const [dataBerry, setDataBerry] = useState< BerryData |undefined>(undefined);
+  const [dataBerry, setDataBerry] = useState< ModalBerryData |undefined>(undefined);
   
 
   useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch(parametros.url)
+    fetch('https://pokeapi.co/api/v2/berry?limit=8000')
     .then((response) => response.json()) //espera a resposta
     .then((info)=> setDataBerry(info)); //espera o json ficar pronto
-  }, [parametros]);
+  }, []);
 
   if(dataBerry){
     //Resposta enquanto não temos a informação
@@ -62,9 +54,9 @@ function ModalBerry  (props: any, parametros:BerryData ) {
         <Modal.Body>
           <h4>Caracteríticas</h4>
           <p>
-          Natural Gift Power: {parametros.natural_gift_power} <br></br>
-          Smoothness:{parametros.smoothness}<br></br>
-          Growth Time:{parametros.growth_time}<br></br>
+          Natural Gift Power: {dataBerry.natural_gift_power} <br></br>
+          Smoothness: {dataBerry.smoothness}<br></br>
+          Growth Time: {dataBerry.growth_time}<br></br>
           </p>
         </Modal.Body>
         <Modal.Footer>

@@ -6,23 +6,9 @@ import * as styles from './Berry.module.css';
 import ModalBerry from '../ModalBerry/ModalBerry';
 
 import {Button, Card} from  'react-bootstrap';
+import {Data, BerryData} from '../Models/interfaces'
 
 
-
-type BerryData = {
- 
-  name: string,
-  url: string,
- 
-}
-
-interface Data  {
-  natural_gift_power: number ,
-  smoothness: number,
-  growth_time: number,
-  name: string,
-  item: BerryData
-}
 
 function Berry  (parametros: BerryData)  {
 

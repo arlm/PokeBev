@@ -1,23 +1,14 @@
-import React from 'react';
 import  {useEffect, useState} from 'react'
 import './App.css';
 import Berry from  './components/Berry/Berry';
+import { BerryData } from './components/Models/interfaces';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import Contests from './components/Contest/Contest';
 
 
-
-type BerryData = {
- 
-  name: string,
-  url: string,
-  
-}
-
 function AppPokemon() {
 
-  
 
   //berries
   const [berries, setBerries] = useState<BerryData[]>([]);
@@ -40,20 +31,15 @@ function AppPokemon() {
   // }, []);
 
   return (
-    <>
+    
     <div>
       
-
       <div className="Berries-List">
   
         {
           berries.length > 0 && berries.map((berry) => <Berry url={berry.url} name={berry.name}  ></Berry>) //se a primeira for falsa, para.
         }
         
-
-     
-
-
       </div>
 
       {/* <div className="Contests-List">
@@ -61,8 +47,8 @@ function AppPokemon() {
           contests.length > 0 && pokemons.map((pokemon) => <Contests url={pokemon.url} name={pokemon.name} ></Contests>) //se a primeira for falsa, para.
         }
       </div> */}
-      </div>
-    </>
+    </div>
+    
   )
 }
 
