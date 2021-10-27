@@ -59,12 +59,23 @@ const EvolutionCard = (props:{showModal:boolean, pokeName?:string, objetoEvoluca
   function baseEvoDetails(){
     let list = []
     for (let i = 0; i < listTopics.length; i++) {
-      if(listTopics[i]){
-        list.push(`${Object.keys(evoDetailsBase)[i]}:${listTopics[i]}`);
-      }      
+      if (listTopics[i] && levelBase != "use-item") {
+        list.push(`${Object.keys(evoDetailsBase)[i]} : ${listTopics[i]}`);
+      }
+      else if(levelBase == "use-item"){
+        list.push(evoDetailsBase.item.name);
+      }          
     }
-    return list
+    if(list[0] == list[1]){
+      return list[0]
+    }
+    else{
+      return list
+    }
+    
+    
   }; 
+  
 
   function showIf(){
   if(levelBase){return levelBase}  
@@ -82,8 +93,7 @@ const EvolutionCard = (props:{showModal:boolean, pokeName?:string, objetoEvoluca
         <div className={styles.EvolutionCard} data-testid="EvolutionCard">
           {props.pokeName}
           <p>{showIf()}</p>
-          <p>{baseEvoDetails()}</p>
-          
+          <p>{baseEvoDetails()}</p>          
         </div>
       </Modal.Body>
     </Modal>
