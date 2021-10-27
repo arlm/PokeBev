@@ -69,6 +69,7 @@ function Evolution(params: PokemonDataEvolution) {
               <h3>{pokeNameBase}</h3>
               {openModal && (
                 <EvolutionCard
+                  pokeFirst={pokeNameFirst}
                   showModal
                   pokeName={pokeNameBase}
                   objetoEvolucao={evolucao}
@@ -105,7 +106,7 @@ function Evolution(params: PokemonDataEvolution) {
                 src={srcBaseImg}
               />
               <h3>{pokeNameBase}</h3>
-              {openModal && <EvolutionCard showModal  pokeName={pokeNameBase} objetoEvolucao = {evolucao}  />}              
+              {openModal && <EvolutionCard showModal pokeFirst={pokeNameFirst}  pokeName={pokeNameBase} objetoEvolucao = {evolucao}  />}              
               <img
                 className={styles.PokemonMini}
                 alt={pokeNameFirst}
