@@ -8,6 +8,7 @@ function Version() {
   const [versions, setVersions] = useState<any>();
   const [version, setVersion] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
+  const [filtroCor, setFiltroCor] = useState<string>("");
 
   useEffect(() => {
     const pegaVersoes = async () => {
@@ -21,12 +22,13 @@ function Version() {
 
   const getVersion = async (nameVersion: any) => {
     setLoading(true);
+    setFiltroCor(nameVersion);
     try {
       const resposta = await fetch(
-        `https://pokeapi.co/api/v2/version/${nameVersion}`
+        "https://pokeapi.co/api/v2/pokemon"
       );
       const objVersion = await resposta.json();
-      setVersion(objVersion.version_group);
+      setVersion(objVersion.results);
       setLoading(false);
     } catch (error) {}
   };
@@ -66,9 +68,8 @@ function Version() {
         <div className={`container ${styles.bodyModal}`}>
           <div className=" w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
             <div className="align-items-center flex-wrap d-flex justify-content-evenly  ">
-              {version.map((pokemon: any) => (
-                < ImgDoPokemon pokeName={pokemon.name} />
-                
+              {version.map((version: any) => (
+                < ImgDoPokemon pokeName={version.name} filtro={filtroCor} />
                 ))}
             </div>
           </div>
