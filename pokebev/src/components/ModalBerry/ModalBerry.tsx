@@ -20,7 +20,7 @@ function ModalBerry  (props: any, parametros:ModalBerryData ) {
   
 
   useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch('https://pokeapi.co/api/v2/berry?limit=8000')
+    fetch(parametros.url)
     .then((response) => response.json()) //espera a resposta
     .then((info)=> setDataBerry(info)); //espera o json ficar pronto
   }, []);
@@ -54,9 +54,9 @@ function ModalBerry  (props: any, parametros:ModalBerryData ) {
         <Modal.Body>
           <h4>Caracteríticas</h4>
           <p>
-          Natural Gift Power: {dataBerry.natural_gift_power} <br></br>
-          Smoothness: {dataBerry.smoothness}<br></br>
-          Growth Time: {dataBerry.growth_time}<br></br>
+          Natural Gift Power: {parametros.natural_gift_power} <br></br>
+          Smoothness: {parametros.smoothness}'<br></br>
+          Growth Time: {parametros.growth_time}'<br></br>
           </p>
         </Modal.Body>
         <Modal.Footer>
