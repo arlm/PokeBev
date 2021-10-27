@@ -3,68 +3,74 @@ import { useEffect, useState } from "react"
 
 interface EncounterType {
   name: any
-  id: any
 }
 
 function Encounter() {
-  const [name, setName] = useState<any>("")
-  // const [id, setId] = useState<any>("")
-  const [lista, setLista] = useState<any>([])
-  const [encounter, setEncounter] = useState<EncounterType[]>([])
+  const [encounterList, setListEncounters] = useState<EncounterType[]>([])
+  const [encounterDetails, setEncountersDetails] = useState<any[]>([])
+  const [namePokemon, setNamePokemon] = useState<string>("")
 
   useEffect(() => {
-    const pegaEncounters = async () => {
+    const showEncounters = async () => {
       const resposta = await fetch(
         "https://pokeapi.co/api/v2/encounter-method/"
       )
       const objtEncounters = await resposta.json()
-      setLista(objtEncounters.results)
+      setListEncounters(objtEncounters.results)
+      // console.log(encounterList)
     }
-    pegaEncounters()
+    showEncounters()
   }, [])
 
   useEffect(() => {
-    mostrarEncounters()
-  },[])
+    showEncounterPokemon(namePokemon)
+  }, [])
 
-  const mostrarEncounters = async () => {
-    console.log(name)
-
+  async function showEncounterPokemon(namePokemon: string) {
     try {
-      if (name.length > 0 || name) {
-        const resposta = await fetch(
-          `https://pokeapi.co/api/v2/encounter-method/${name}`
-        )
-        const EncounterDetails = await resposta.json()
-        console.log(EncounterDetails)
-        // setEncounter(EncounterDetails.results)
-      }
+      const resposta = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${namePokemon}/encounters`
+      )
+      const encounterDetailsObj = await resposta.json()
+      console.log(encounterDetailsObj)
+      setEncountersDetails(encounterDetailsObj)
     } catch (error) {
-      alert("Espaço vazio")
+      console.log(error)
     }
   }
 
   return (
     <div className={styles.Encounter} data-testid="Encounter">
       <div>
-        {encounter && (
+        {encounterList && (
           <>
             <h3> Lista de encounters: </h3>
-            <input
-              placeholder="Escolha um encounter."
-              list="pokemon"
-              required
-              minLength={1}
-              value={name}
-              onChange={(e) => setName(e.currentTarget.value)}
-            />
-            <datalist id="pokemon">
-              {Object.keys(lista).length > 0 &&
-                lista.map((s: any) => <option value={s.name} key={s.name} />)}
-            </datalist>
-            <button onClick={mostrarEncounters}>GO</button>
-            {/* <span>{encounter}</span> */}
+            <ul>
+              {encounterList.map((enc) => (
+                <li>{enc.name}</li>
+              ))}
+            </ul>
           </>
+        )}
+      </div>
+      <div>
+        <h3>Onde encontrar este pokémon?</h3>
+        <input
+          placeholder="Digite nome do Pokemon"
+          required
+          minLength={1}
+          value={namePokemon}
+          onChange={(e) => setNamePokemon(e.target.value)}
+        />
+        <button onClick={() => showEncounterPokemon(namePokemon)}>GO</button>
+        {encounterDetails.length > 0 && (
+          <div>
+            <ul>
+              <li>{encounterDetails[0].location_area.name}</li>
+              <li>{encounterDetails[1].location_area.name}</li>
+              <li>{encounterDetails[2].location_area.name}</li>
+            </ul>
+          </div>
         )}
       </div>
     </div>
