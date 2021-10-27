@@ -1,11 +1,9 @@
 import  {useEffect, useState} from 'react'
-import './App.css';
 import Berry from  './components/Berry/Berry';
 import { BerryData } from './components/Models/interfaces';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import Contests from './components/Contest/Contest';
-
+import './App.css';
 
 function AppPokemon() {
 
@@ -33,13 +31,11 @@ function AppPokemon() {
   return (
     
     <div>
-      
+      <h1>Berry</h1>
       <div className="Berries-List">
-  
         {
           berries.length > 0 && berries.map((berry) => <Berry url={berry.url} name={berry.name}  ></Berry>) //se a primeira for falsa, para.
         }
-        
       </div>
 
       {/* <div className="Contests-List">
