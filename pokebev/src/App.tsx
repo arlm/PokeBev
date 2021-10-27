@@ -10,6 +10,7 @@ function AppPokemon() {
       <Games />
       <Pokedexes />
       <Version />
+      <VersionGroup />
     </div>
   )
 }
