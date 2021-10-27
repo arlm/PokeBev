@@ -15,7 +15,7 @@ function Version() {
       const resposta = await fetch("https://pokeapi.co/api/v2/version");
       const objVersions = await resposta.json();
       setVersions(objVersions.results);
-      console.log(versions, 'primeiro')
+   
     };
     pegaVersoes();
   }, []);
@@ -25,10 +25,10 @@ function Version() {
     setFiltroCor(nameVersion);
     try {
       const resposta = await fetch(
-        "https://pokeapi.co/api/v2/pokemon"
+        "https://pokeapi.co/api/v2/pokemon/?limit=1118&offset=0"
       );
       const objVersion = await resposta.json();
-      setVersion(objVersion.results);
+      setVersion(objVersion.results.reverse());
       setLoading(false);
     } catch (error) {}
   };

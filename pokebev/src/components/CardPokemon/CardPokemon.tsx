@@ -2,9 +2,15 @@ import { ReactElement, useEffect, useState } from "react";
 import styles from "./CardPokemon.module.css";
 import { Card, ListGroup } from "react-bootstrap";
 
-function ImgDoPokemon({ pokeName, filtro }: { pokeName: string, filtro?: string }) {
+function ImgDoPokemon({
+  pokeName,
+  filtro,
+}: {
+  pokeName: string;
+  filtro?: any;
+}) {
   const [pokeDados, setPokeDados] = useState<any>();
-  const [mostrar, setMostrar]  = useState<Boolean>(false);
+  const [mostrar, setMostrar] = useState<Boolean>(false);
   /**como cada card ta recebendo so o nome, vamos passar isso como props para nosso novo componente, cada card vai fazer o fetch usando o nome q recebemos. Então a cada pokemon ele vai fazer um fetch, para isso precisamos de useEffect*/
   useEffect(() => {
     const pegaGeracoes = async () => {
@@ -14,12 +20,20 @@ function ImgDoPokemon({ pokeName, filtro }: { pokeName: string, filtro?: string 
       const objPokemon =
         await resposta.json(); /**transformando em obj legivel */
       //   const appArr: String[] = objGenerations.results.map((gen: { name: String }) => gen.name)
-      if (filtro === objPokemon.game_indices[0].version.name) {
-        setMostrar(true)
-      } // condicional criada p filtro dos pokemons por versao (ex.: red)
-      
+
+      const arrayIndices = objPokemon.game_indices;
+
+      const arrVersions: string[] = arrayIndices.map(
+        ({ version }: any) => version.name
+      );
+
+      if (arrVersions.includes(filtro)) {
+        // condicional criada p filtro dos pokemons por versao (ex.: red)
+
+        setMostrar(true);
+      }
+
       setPokeDados(objPokemon);
-      console.log(objPokemon);
     };
     pegaGeracoes(); /** chamar a função q escrevemos acima*/
   }, []);
@@ -47,16 +61,16 @@ function ImgDoPokemon({ pokeName, filtro }: { pokeName: string, filtro?: string 
               <div className={styles.status}>
                 Status:
                 {pokeDados.stats.map((s: any) => (
-               <> <p>
-                  {s.stat.name} {s.base_stat}
-                 </p>
-                 <span
-                    key={"stat" + s.stat.name}
-                    style={{ width: s.base_stat * 2 + "px" }}
-                  >
-                   
-                  </span>
-                 </>
+                  <>
+                    {" "}
+                    <p>
+                      {s.stat.name} {s.base_stat}
+                    </p>
+                    <span
+                      key={"stat" + s.stat.name}
+                      style={{ width: s.base_stat * 2 + "px" }}
+                    ></span>
+                  </>
                 ))}
               </div>
             </Card.Text>
