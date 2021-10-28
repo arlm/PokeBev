@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PokeLoagind from "./loading.gif";
-import styles from "./Games.module.css";
+import styles from "./Generations.module.css";
 import { Card, ListGroup } from "react-bootstrap";
 import ImgDoPokemon from "../../CardPokemon/CardPokemon";
 
