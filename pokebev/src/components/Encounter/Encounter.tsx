@@ -29,7 +29,7 @@ function Encounter() {
   async function showEncounterPokemon(namePokemon: string) {
     try {
       const resposta = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${namePokemon.toLocaleLowerCase()}/encounters`
+        `https://pokeapi.co/api/v2/pokemon/${namePokemon.toLowerCase()}/encounters`
       )
       const encounterDetailsObj = await resposta.json()
       // console.log(encounterDetailsObj)
