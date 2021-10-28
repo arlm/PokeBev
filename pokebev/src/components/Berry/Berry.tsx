@@ -2,11 +2,12 @@ import {useEffect, useState} from 'react';
 import React from 'react';
 
 import BerryImage from '../BerryImage/BerryImage';
-import * as styles from './Berry.module.css';
+
 import ModalBerry from '../ModalBerry/ModalBerry';
 
 import {Button, Card} from  'react-bootstrap';
 import {Data, BerryData} from '../Models/interfaces'
+import * as styles from './Berry.module.css';
 
 
 
