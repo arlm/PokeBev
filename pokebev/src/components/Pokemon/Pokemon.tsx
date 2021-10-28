@@ -16,7 +16,7 @@ function Pokemon  (parametros: PokemonData)  {
     .then((response) => response.json()) //espera a resposta
     .then((data) => setPokemon(data)); //espera o json ficar pronto
   }, []);
-  
+ 
  if(!pokemon){
    //Resposta enquanto não temos a informação
   return (
@@ -25,7 +25,7 @@ function Pokemon  (parametros: PokemonData)  {
       {parametros.name}
     </div>
   )
-  } else{ console.log(pokemon)
+  } else{ console.log('')
     //Resposta quando temos a informação
   return (
   
