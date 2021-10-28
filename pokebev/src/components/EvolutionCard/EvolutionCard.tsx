@@ -69,14 +69,15 @@ const EvolutionCard = (props: {
               </span>
             );
           }
-        }
-        
-        else if (trigger == "use-item") {
-          list.push(<span className = "value">details.item.name</span>);
-        }  
+        }         
       
     };
-     return list
+    if (trigger == "use-item") {
+          list.push(<span className = "value">{details.item.name}</span>);
+        }
+    return list
+    
+    
   } 
 
   

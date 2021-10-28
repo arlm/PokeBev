@@ -15,7 +15,7 @@ function AppPokemon() {
 
   useEffect(() => {
     //faz a chamada, mas nao tem resposta
-    fetch("https://pokeapi.co/api/v2/evolution-chain/?offset=100&limit=20")
+    fetch("https://pokeapi.co/api/v2/evolution-chain/?offset=1&limit=30")
       .then((response) => response.json()) //espera a resposta
       .then((data) => setEvolution(data.results)); //espera o json ficar pronto
   }, [])
