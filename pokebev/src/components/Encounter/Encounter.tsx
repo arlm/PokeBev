@@ -1,5 +1,6 @@
 import styles from "./Encounter.module.css"
 import { useEffect, useState } from "react"
+import { listenerCount } from "process"
 
 interface EncounterType {
   name: any
@@ -17,7 +18,7 @@ function Encounter() {
       )
       const objtEncounters = await resposta.json()
       setListEncounters(objtEncounters.results)
-      // console.log(encounterList)
+      //console.log(encounterList)
     }
     showEncounters()
   }, [])
@@ -29,15 +30,18 @@ function Encounter() {
   async function showEncounterPokemon(namePokemon: string) {
     try {
       const resposta = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${namePokemon.toLowerCase()}/encounters`
-      )
+        `https://pokeapi.co/api/v2/pokemon/${namePokemon.toLowerCase()}/encounters`,
+        
+      );
       const encounterDetailsObj = await resposta.json()
-      // console.log(encounterDetailsObj)
+       console.log(encounterDetailsObj[0].version_details[0].encounter_details[0].condition_values[0].name)
       setEncountersDetails(encounterDetailsObj)
     } catch (error) {
       console.log(error)
     }
   }
+
+  
 
   return (
     <div className={styles.Encounter} data-testid="Encounter">
@@ -65,30 +69,48 @@ function Encounter() {
         <button onClick={() => showEncounterPokemon(namePokemon)}>GO</button>
         {encounterDetails.length > 0 && (
           <div>
-            <ul>
-              <div>
+            
+              <div className={styles.list}>
                 {encounterDetails.map((item: any) => (
                   <div className="card">
                     <p key={item.location_area.name}>
                       {item.location_area.name.charAt(0).toUpperCase() +
                         item.location_area.name.slice(1).replace(/[-]/g, " ")}
                     </p>
-                    {/* <div>
-                      {item.encounter_details?.method.map((subitem: any) => (
-                        <div className="card-item">
-                          <p>{subitem.name}ijui</p>
-                        </div>
-                      ))}
-                    </div> */}
+
+                    <span>
+                      método - 
+                      {
+                        item.version_details[0].encounter_details[0]?.method
+                          ?.name
+                      }
+                      : condição -
+                      {
+                        item.version_details[0].encounter_details[0]
+                          ?.condition_values[0]?.name
+                      }
+                    </span>
+                    <span>
+                     
+                      {
+                        item.version_details[0].encounter_details[1]?.method
+                          ?.name
+                      }
+                      :
+                      {
+                        item.version_details[0].encounter_details[1]
+                          ?.condition_values[0]?.name
+                      }
+                    </span>
                   </div>
                 ))}
               </div>
-            </ul>
+            
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default Encounter

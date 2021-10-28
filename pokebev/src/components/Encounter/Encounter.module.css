@@ -10,3 +10,10 @@
 .card > p {
   text-transform: uppercase;
 }
+
+.list{
+  border: solid black 3px;
+  overflow-y: auto; 
+  max-height: 400px;
+ 
+}
