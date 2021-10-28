@@ -1,0 +1,9 @@
+diff a/pokebev/src/App.css b/pokebev/src/App.css	(rejected hunks)
+@@ -2,7 +2,6 @@
+   display: flex;
+   align-items: center;
+   justify-content:space-between;
+-  background-color: tomato;
+   flex-wrap: wrap;
+ }
+ 
