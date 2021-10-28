@@ -44,7 +44,7 @@ function Encounter() {
       <div>
         {encounterList && (
           <>
-            <h3> Lista de encounters: </h3>
+            <h3> Lista de Encounters: </h3>
             <ul>
               {encounterList.map((enc) => (
                 <li>{enc.name}</li>
@@ -54,9 +54,9 @@ function Encounter() {
         )}
       </div>
       <div>
-        <h3>Onde encontrar este pokémon?</h3>
+        <h3>Onde encontrar este Pokémon?</h3>
         <input
-          placeholder="Digite nome do Pokemon"
+          placeholder="Digite o nome do Pokémon"
           required
           minLength={1}
           value={namePokemon}
