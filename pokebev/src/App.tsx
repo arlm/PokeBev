@@ -7,7 +7,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import Item from './components/Item/Item';
 import Contest from './components/Contest/Contest';
 import Games from './components/Games/Games';
-import Evolution from './components/Evolution/Evolution';
+import EvolutionChains from './components/EvolutionChains/EvolutionChains';
 import Location from './components/Location/Location';
 import Berries from './components/Berry/Berries/Berries';
 import Machine from './components/Machine/Machine';
@@ -15,7 +15,7 @@ import Move from './components/Move/Move';
 
 import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import EvolutionChains from "./components/EvolutionChains/EvolutionChains"
+
 function AppPokemon() {
   return (
     <div>
@@ -50,7 +50,7 @@ function AppPokemon() {
             <Contest />
           </ Route>
           <Route exact path="/Evolution">
-            <Evolution />
+            <EvolutionChains />
           </ Route>
           <Route exact path="/Games">
             <Games />
