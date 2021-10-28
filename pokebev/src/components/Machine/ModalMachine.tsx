@@ -1,3 +1,4 @@
+import styles from './Machine.module.css';
 import { useState } from "react";
 import { Button, Modal, ModalTitle, ModalBody } from "react-bootstrap";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
@@ -17,7 +18,7 @@ export default function ScreenMachines() {
           <ModalHeader closeButton>
               <ModalTitle><img src={Pokebola} width={30}/> Machines </ModalTitle>
           </ModalHeader>
-          <ModalBody>
+          <ModalBody className={styles.fundo}>
               <Machine />
           </ModalBody>
       </Modal>

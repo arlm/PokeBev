@@ -21,10 +21,9 @@ export default function MachineAnalysis(parametros: MachineData) {
   console.log(machines);
 
   return (
-    <div className={styles.listaMachine}> <p><img src={TM} width={30}/> Nome: {machines?.item.name ?? "ERROR"} <br/>
-        Movimento: {machines?.move.name ?? "ERROR"} <br/>
-        Versão do Game: {machines?.version_group.name ?? "ERROR"} </p> 
-    <hr />          
+    <div className={styles.listaMachine}> <p> <h3> <img src={TM} width={30}/> {machines?.item.name ?? "ERROR"} </h3>
+        <span>Movimento:</span> {machines?.move.name ?? "ERROR"} <br/>
+        <span>Versão do Game:</span> {machines?.version_group.name ?? "ERROR"} </p>          
     </div>
   );
 }

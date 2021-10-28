@@ -1,8 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+.fundo {
+    background-color: #f2c9d0;
+}
+
 .listaMachine {
+    color: #636363;
+    display: flex;
     font-family: 'VT323', monospace;
     font-size: 20px;
-    list-style: none;
-    width: 250px;
+    align-items: center;
+    width: 290px;
+    min-height: 150px;
+    background-color: #fff;
+    margin-top: 50px;
+    margin-left: 50px;
+    padding: 20px;
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+    border-radius: 10px;
+}
+
+.listaMachine span {
+    color:#D97F88;
+}
+
+h3 {
+    color:#D97F88;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.tudo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-right: 50px;
 }
