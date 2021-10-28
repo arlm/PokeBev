@@ -2,3 +2,11 @@
   display: flex;
   align-items: center;
 }
+.card {
+  min-width: 200px;
+  min-height: 200px;
+  outline: 2px solid #d0cdcd;
+}
+.card > p {
+  text-transform: uppercase;
+}

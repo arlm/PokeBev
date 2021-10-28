@@ -32,7 +32,7 @@ function Encounter() {
         `https://pokeapi.co/api/v2/pokemon/${namePokemon}/encounters`
       )
       const encounterDetailsObj = await resposta.json()
-      console.log(encounterDetailsObj)
+      // console.log(encounterDetailsObj)
       setEncountersDetails(encounterDetailsObj)
     } catch (error) {
       console.log(error)
@@ -47,7 +47,7 @@ function Encounter() {
             <h3> Lista de encounters: </h3>
             <ul>
               {encounterList.map((enc) => (
-                <li>{enc.name}</li>
+                <li>{enc.name.charAt(0).toUpperCase() + enc.name.slice(1)}</li>
               ))}
             </ul>
           </>
@@ -66,9 +66,16 @@ function Encounter() {
         {encounterDetails.length > 0 && (
           <div>
             <ul>
-              <li>{encounterDetails[0].location_area.name}</li>
-              <li>{encounterDetails[1].location_area.name}</li>
-              <li>{encounterDetails[2].location_area.name}</li>
+              <div>
+                {encounterDetails.map((item: any) => (
+                  <div className="card">
+                    <p key={item.location_area.name}>
+                      {item.location_area.name.charAt(0).toUpperCase() +
+                        item.location_area.name.slice(1).replace(/[-]/g, " ")}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </ul>
           </div>
         )}
