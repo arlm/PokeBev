@@ -35,6 +35,7 @@ img {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
+  box-shadow: 3px 3px 8px 0px rgba(250, 250, 250, 0.53)
 }
 
 .card-body {
@@ -53,8 +54,8 @@ img {
   padding: 0.2rem .6rem;
 }
 
-.btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-  background-color: #EBCC44;
-  border-color: #EBCC44;
-  color: #000;
+.btn-primary:hover {
+  background-color: #ffea8c;
+  border-color: #ffea8c;
+  color: rgb(78, 78, 78);
 }
