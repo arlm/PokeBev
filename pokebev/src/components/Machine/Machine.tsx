@@ -1,10 +1,21 @@
 import React from 'react';
 import styles from './Machine.module.css';
+import { useState, useEffect } from "react";
 
-const Machine = () => (
-  <div className={styles.Machine} data-testid="Machine">
-    Machine Component
-  </div>
-);
+export default function Machine() {
+  const [machines, setMachines] = useState<any>([]);
 
-export default Machine;
+  useEffect(() => {
+    fetch('https://pokeapi.co/api/v2/machine/')
+      .then((response) => response.json())
+      .then((data) => setMachines(data));
+  }, []);
+
+  return (
+    <ul className="MachineList">
+      {
+        machines.map((machine: any) => <li key={machine.name}>{machine.move}</li>)
+      }
+    </ul>
+  );
+}
