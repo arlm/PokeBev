@@ -9,6 +9,7 @@
     border: 1px solid ;
     border-radius: 10%;
     border-bottom: solid;
+    background-color:rgb(161, 199, 201);
 }
 .PokemonBase{
     width: fit-content;
