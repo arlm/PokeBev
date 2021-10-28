@@ -1,5 +1,4 @@
-import {useEffect, useState} from 'react';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import BerryImage from '../BerryImage/BerryImage';
 
@@ -10,15 +9,14 @@ import {Data, BerryData} from '../Models/interfaces'
 import * as styles from './Berry.module.css';
 
 
-
-function Berry  (parametros: BerryData)  {
+function Berry  ({name}: {name:string})  {
 
    const [berries, setBerry] = useState<Data | undefined>(undefined);
-   const [modalShow, setModalShow] = React.useState(false);
+   const [modalShow, setModalShow] = useState(false);
    
 
   useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch(parametros.url)
+    fetch(`https://pokeapi.co/api/v2/berry/${name}`)
     .then((response) => response.json()) //espera a resposta
     .then((data)=> setBerry(data)); //espera o json ficar pronto
   }, []);
@@ -29,7 +27,7 @@ function Berry  (parametros: BerryData)  {
   return (
   
     <div className={styles.default.Berry} data-testid="Berry">
-      {parametros.name}
+      {name}
            
       carregando berries...
 
@@ -55,6 +53,7 @@ function Berry  (parametros: BerryData)  {
           </Button>
 
           <ModalBerry
+            detalhes={berries}
             show={modalShow}
             onHide={() => setModalShow(false)}
           />

@@ -3,64 +3,46 @@ import styles from './ModalBerry.module.css';
 import {Modal, Button, } from  'react-bootstrap';
 import {useEffect, useState} from 'react';
 
-interface ModalBerryData  {
+// interface ModalBerryData  {
  
-  name: string,
-  url: string,
-  natural_gift_power: number ,
-  smoothness: number,
-  growth_time: number,
+//   name: string,
+//   url: string,
+//   natural_gift_power: number ,
+//   natural_gift_type: string,
+//   smoothness: number,
+//   growth_time: number,
  
-}
+// }
 
-function ModalBerry  (props: any, parametros:ModalBerryData ) {
+function ModalBerry  (objBerries: any) {
 
   
-  const [dataBerry, setDataBerry] = useState< ModalBerryData |undefined>(undefined);
-  
+  const [dataBerry, setDataBerry] = useState<any>();
 
-  useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch(parametros.url)
-    .then((response) => response.json()) //espera a resposta
-    .then((info)=> setDataBerry(info)); //espera o json ficar pronto
-  }, []);
-
-  if(dataBerry){
-    //Resposta enquanto não temos a informação
-   return (
-   
-     <div className={styles.ModalBerry} data-testid="ModalBerry">
-       {parametros.name}
-            
-       carregando berries...
- 
-     </div>
-   )
-   }else{
-      return(
+    return(
             
     <div className={styles.ModalBerry} data-testid="ModalBerry">
       <Modal
-        {...props}
+        {...objBerries} //não é obrigatório, aqui faz a desestruturação do obj. 
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Nome
+            {objBerries.detalhes.item.name}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <h4>Caracteríticas</h4>
           <p>
-          Natural Gift Power: {parametros.natural_gift_power} <br></br>
-          Smoothness: {parametros.smoothness}'<br></br>
-          Growth Time: {parametros.growth_time}'<br></br>
+          Natural Gift Power: {objBerries.detalhes.natural_gift_power}: {objBerries.detalhes.natural_gift_type.name}<br></br>
+          Smoothness: {objBerries.detalhes.smoothness}<br></br>
+          Growth Time: {objBerries.detalhes.growth_time}<br></br>
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button onClick={objBerries.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     </div>
@@ -69,6 +51,5 @@ function ModalBerry  (props: any, parametros:ModalBerryData ) {
    }
 
   
-}
 
 export default ModalBerry;

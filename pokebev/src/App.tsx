@@ -1,9 +1,7 @@
-import  {useEffect, useState} from 'react'
-import Berry from  './components/Berry/Berry';
-import { BerryData } from './components/Models/interfaces';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import Contests from './components/Contest/Contest';
 import './App.css';
+
 import Home from './components/Home/Home';
 import { Route, Switch, Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
@@ -14,30 +12,12 @@ import Game from './components/Game/Game';
 import Evolution from './components/Evolution/Evolution';
 import Location from './components/Location/Location';
 
-
+import Berries from './components/Berry/Berries/Berries';
 
 function AppPokemon() {
 
 
-  //berries
-  const [berries, setBerries] = useState<BerryData[]>([]);
-
-
-  useEffect(() => { //faz a chamada, mas nao tem resposta
-    fetch('https://pokeapi.co/api/v2/berry?limit=8000')
-    .then((response) => response.json()) //espera a resposta
-    .then((data) => setBerries(data.results)); //espera o json ficar pronto
-  }, []);
-
   
-
-  // //contests
-  // const [contests, setContests] = useState<PokemonData[]>([]);
-  // useEffect(() => { //faz a chamada, mas nao tem resposta
-  //   fetch('https://pokeapi.co/api/v2/contests?limit=3')
-  //   .then((response) => response.json()) //espera a resposta
-  //   .then((data) => setContests(data.results)); //espera o json ficar pronto
-  // }, []);
 
   return (
     <div>
@@ -72,13 +52,13 @@ function AppPokemon() {
             <Contest />
           </ Route>
 
-          <Route exact path="/Games">
+          <Route exact path="/Game">
             <Game />
           </ Route>
 
-          {/* <Route exact path="/Berry">
-            <Berry />
-          </ Route> */}
+          <Route exact path="/Berries">
+            <Berries />
+          </ Route>
 
           <Route exact path="/Evolution">
             <Evolution />
