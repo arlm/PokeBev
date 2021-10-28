@@ -1,6 +1,7 @@
 import  {useEffect, useState} from 'react'
 import Berry from '../Berry'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../Berry.css'
 
 
 function Berries() {
