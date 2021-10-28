@@ -1,14 +1,22 @@
 import {useEffect, useState} from 'react';
-import React from 'react';
-
 import BerryImage from '../BerryImage/BerryImage';
 import * as styles from './Berry.module.css';
-import ModalBerry from '../ModalBerry/ModalBerry';
+import ModalBerry from '../ModalBerry/ModalBerry'
 
-import {Button, Card} from  'react-bootstrap';
-import {Data, BerryData} from '../Models/interfaces'
+type BerryData = {
+ 
+  name: string,
+  url: string,
+ 
+}
 
-
+interface Data  {
+  natural_gift_power: number ,
+  smoothness: number,
+  growth_time: number,
+  name: string,
+  item: BerryData
+}
 
 function Berry  (parametros: BerryData)  {
 
@@ -39,37 +47,15 @@ function Berry  (parametros: BerryData)  {
     
   return (
     <div>
-
-      <div>
-      <Card>
+       <ModalBerry
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+      <div className={styles.default.Berry} data-testid="Berry">
+      
+        {/* {berries.name}
         <BerryImage name={berries.item.name} url={berries.item.url} />
-
-        <Card.Body>
-          <Card.Text>
-          {berries.name.toUpperCase()}
-          </Card.Text>
-
-          <Button variant="primary" onClick={() => setModalShow(true)}>
-            Informações
-          </Button>
-
-          <ModalBerry
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-          />
-        </Card.Body>
-      </Card>
-       <br />
         
-      
-
-      
-      </div>
-
-     {/* /* { <div className={styles.default.Berry} data-testid="Berry">
-        
-        {berries.name}
-       <BerryImage name={berries.item.name} url={berries.item.url} />
         <ul>
           <li>
             Natural Gift Power:{berries.natural_gift_power}
@@ -80,11 +66,11 @@ function Berry  (parametros: BerryData)  {
           <li>
             Growth Time:{berries.growth_time}
           </li>
-        </ul>
+        </ul> */}
         
-      </div> } */}
+      </div>
       
-    </div> 
+    </div>  
   ) 
   }
 }
