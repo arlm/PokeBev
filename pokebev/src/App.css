@@ -1,12 +1,61 @@
-.Pokemon-List {
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
-  background-color: tomato;
-  width: 75vw;
-  flex-wrap: wrap;
-  margin-top: 2vw;
-
+* {
+  box-sizing: border-box;
 }
 
+body {
+  background-color: rgb(36, 36, 36);
+}
 
+h1 {
+  color: #fff;
+  text-align: center;
+  margin: 50px;
+}
+
+img {
+  width: 40px;
+}
+
+.Berries-List {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 75vw;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.card {
+  align-items: center;
+  padding-top: 1rem;
+  padding: 2rem;
+}
+
+.card:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  box-shadow: 3px 3px 8px 0px rgba(250, 250, 250, 0.53)
+}
+
+.card-body {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.card-text {
+  text-align: center;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: #EBCC44;
+  border-color: #EBCC44;
+  color: #000;
+  padding: 0.2rem .6rem;
+}
+
+.btn-primary:hover {
+  background-color: #ffea8c;
+  border-color: #ffea8c;
+  color: rgb(78, 78, 78);
+}
