@@ -13,7 +13,7 @@ function AppPokemon() {
   const [evolution, setEvolution] = useState<PokemonDataEvolution[]>([])
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/evolution-chain/?offset=100&limit=20")
+    fetch("https://pokeapi.co/api/v2/evolution-chain/?offset=1&limit=20")
       .then((response) => response.json()) 
       .then((data) => setEvolution(data.results));
   }, [])

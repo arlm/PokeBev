@@ -73,6 +73,13 @@ function Encounter() {
                       {item.location_area.name.charAt(0).toUpperCase() +
                         item.location_area.name.slice(1).replace(/[-]/g, " ")}
                     </p>
+                    {/* <div>
+                      {item.encounter_details?.method.map((subitem: any) => (
+                        <div className="card-item">
+                          <p>{subitem.name}ijui</p>
+                        </div>
+                      ))}
+                    </div> */}
                   </div>
                 ))}
               </div>
