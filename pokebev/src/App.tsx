@@ -34,13 +34,11 @@ function AppPokemon() {
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/Berries">Berries</Nav.Link>
-              <Nav.Link as={Link} to="/Contests">Contests</Nav.Link>
               <Nav.Link as={Link} to="/Evolution">Evolution</Nav.Link>
               <Nav.Link as={Link} to="/Encounter">Encounter</Nav.Link>
               <Nav.Link as={Link} to="/Games">Games</Nav.Link>
               <Nav.Link as={Link} to="#" onClick={() => setShow(true)}>Locations</Nav.Link>
               <Nav.Link as={Link} to="/Machine">Machine</Nav.Link>
-              <Nav.Link as={Link} to="/Moves">Moves</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

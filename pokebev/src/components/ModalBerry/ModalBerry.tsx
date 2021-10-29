@@ -30,15 +30,15 @@ function ModalBerry  (objBerries: any) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            {objBerries.detalhes.item.name}
+            <b>{objBerries.detalhes.item.name.toUpperCase()}</b>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Caracteríticas</h4>
+          <h4><em>Características</em></h4>
           <p>
-          Natural Gift Power: {objBerries.detalhes.natural_gift_power}: {objBerries.detalhes.natural_gift_type.name}<br></br>
-          Smoothness: {objBerries.detalhes.smoothness}<br></br>
-          Growth Time: {objBerries.detalhes.growth_time}<br></br>
+          <b>Natural Gift Power:</b> {objBerries.detalhes.natural_gift_type.name}- <b>valor:</b> {objBerries.detalhes.natural_gift_power}<br></br>
+          <b>Smoothness:</b> {objBerries.detalhes.smoothness}<br></br>
+          <b>Growth Time: </b>{objBerries.detalhes.growth_time}<br></br>
           </p>
         </Modal.Body>
         <Modal.Footer>

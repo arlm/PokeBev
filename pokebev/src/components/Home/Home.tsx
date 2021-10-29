@@ -24,20 +24,21 @@ function Home() {
   return (
     <>
       <h1>Oi, você está no Pokebev</h1>
-      {
+      <div className="d-flex flex-row">{
         grupos.map(
           (grupo) => (
-            <Link to={`/GroupDetails/${grupo.name}`}>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={grupo.image} />
+            <Link className="text-decoration-none" to={`/GroupDetails/${grupo.name}`}>
+              <Card className="p-4 m-2 d-flex justify-content-center align-items-center" style={{ width: '18rem', height: '24rem'}}>
+                <Card.Img className="h-75" variant="top" src={grupo.image} />
                 <Card.Body>
-                  <Card.Title>Grupo {grupo.name}</Card.Title>
+                  <Card.Title className="text-warning ">Grupo {grupo.name}</Card.Title>
                 </Card.Body>
               </Card>
             </Link>
           )
         )
       }
+      </div>
     </>
   )
 };
