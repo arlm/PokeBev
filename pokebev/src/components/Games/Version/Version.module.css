@@ -1,66 +1,81 @@
 .Version {
-    margin:0;
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .loading {
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
-.bodyModal{
-    background-color:#D8BFD8;
-    width: 100%;
-    height: 100%;
-    
+.Modal {
+  background-color: rgb(255, 199, 44);
+  display: flex;
+  justify-content: space-around;
 }
-
-.Modal{
-    background-color: rgb(255,199,44) ;
-    display: flex;
-    justify-content: space-around;
-}
-.headerCard{
-    display: flex;
-    background-color:#9370DB;
+.headerCard {
+  display: flex;
+    background-color: #FFC629;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: black;
+    font-weight: bolder;
+ }
+.card {
+  background-color: #eaeaea;
+  display: flex;
+  justify-content: center;  
 }
-.card{
-    background-color:#EAEAEA;
-    display: flex;
-    justify-content: center;
-    
+
+.cardMenor {
+  height: 60px;
+  cursor: pointer;
+  position: relative;
 }
 
-.cardMenor{
-    height: 60px;
-    cursor: pointer;
-    position: relative;
-  }
+.container {
+  background-color: #D8BFD8;
+  
+}
 
-  .container{
-      background-color:#D8BFD8 ;
-  }
-  .FigureCaption {
-      color: black;
-      font-size: medium;
-  }
+.FigureCaption {
+  color: black;
+  font-size: xx-large;
+  margin-left: 1.3cm;
+}
 
-  .finalFigure {
-      margin-left: 2cm;
-  }
-   
+.finalFigure {
+  margin-top: 1cm;
+  margin-left: 2cm;
+  height: 342px;
+  width: auto;
+}
+
+.finalFigure2 {
+  margin-top: 0.9cm;
+  margin-left: 3cm;
+  height: 342px;
+  width: auto;
+}
+
+.tabela1 {
+  margin-top: 2cm;
+}
+
+.blocoFigure {
+  background-color: white;
+  height: 520px;
+  width: 800px;
+}

@@ -31,10 +31,10 @@ function Pokedexes() {
   };
 
   return (
-    <div className="d-flex d-flex justify-content-center mt-5 py-3 ">
+    <div className={styles.tabela1}>
       {pokedexes && !pokedex && !loading && (
         <>
-          <Card className="border border-5 border-secondary mb-5" style={{ width: "60rem" }}>
+          <Card className="border border-5 border-secondary mb-5">
             <Card.Header className={styles.headerCard}>
               Pokedex
             </Card.Header>

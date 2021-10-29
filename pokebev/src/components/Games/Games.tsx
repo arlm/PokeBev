@@ -8,13 +8,14 @@ import { Nav, Tabs, Tab } from "react-bootstrap";
 
 export default function Games() {
   return (
-    <>
+    <div className='Games'>
 
       <Tabs
         defaultActiveKey="Generations"
         id="uncontrolled-tab-example"
         className={styles.Games}
       >
+        
         <Tab eventKey="Generations" title="Generations">
         <Generations />
         </Tab>
@@ -30,6 +31,6 @@ export default function Games() {
       </Tabs>
 
     
-    </>
+    </div>
   );
 }

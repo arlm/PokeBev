@@ -1,0 +1,11 @@
+.Games .nav-link  {
+    color: black;
+}
+
+.Games .nav-link:hover {
+    color: #FFC629 !important;
+}
+
+.Games .nav-link:focus {
+    color: #EAEAEA;
+}
