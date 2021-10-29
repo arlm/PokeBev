@@ -13,7 +13,7 @@ Implementar:
 ### Grupo 2 ⚡
 
 Implementar:
-- Encounters e Evolution
+- Evolution e encounters
 
 *Integrantes*
 - Cyro Renato
