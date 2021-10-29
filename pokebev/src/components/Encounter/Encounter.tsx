@@ -94,7 +94,7 @@ function Encounter() {
       </section>
       <section className={styles.localPokemon}>
         <h2>Onde encontrar este Pokémon?</h2>
-        <Form className="d-flex formulario">
+        <Form className="d-flex mb-2">
           <FormControl
             type="search"
             placeholder="Digite o nome do Pokémon"
@@ -151,7 +151,6 @@ function Encounter() {
                         .slice(1)
                         .replace(/[-]/g, " ")}
                   </p>
-
                   <p>
                     {item.version_details[0].encounter_details[0]?.condition_values[0]?.name
                       .charAt(0)
