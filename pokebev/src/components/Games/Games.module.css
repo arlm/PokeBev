@@ -1,5 +1,6 @@
 .Games {
-    width: 100vw;
+    display: flex;
+    align-items: center;
     background-color: white;
     color: black;
 }

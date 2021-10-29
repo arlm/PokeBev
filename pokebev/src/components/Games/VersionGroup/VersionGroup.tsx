@@ -47,13 +47,11 @@ function VersionGroup() {
   };
 
   return (
-    <div className="d-flex d-flex justify-content-center mt-5 py-3 ">
+    <div className={styles.tabela1}>
       {versions && !version && !loading && (
         <>
           <Card
-            className="border border-5 border-secondary mb-5"
-            style={{ width: "60rem" }}
-          >
+            className="border border-5 border-secondary d-flex justify-content-center"          >
             <Card.Header className={styles.headerCard}>
               Versão dos Grupos dos Pokemons
             </Card.Header>

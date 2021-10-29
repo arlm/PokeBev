@@ -40,13 +40,10 @@ function Version() {
   };
 
   return (
-    <div className="text-center">
+    <div className={styles.tabela1}>
       {versions && !version && !loading && (
         <>
-          <Card
-            className="border border-5 border-secondary mb-5"
-            style={{ width: "60rem" }}
-          >
+          <Card className="border border-5 border-secondary d-flex justify-content-center">
             <Card.Header className={styles.headerCard}>
               Versão dos Pokemons
             </Card.Header>
@@ -76,31 +73,27 @@ function Version() {
 
       {version && (
         <div
-          onClick={() => setVersion(null)}
-          className={`container ${styles.bodyModal}`}
-        >
-          <div className=" w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
-            <div className="align-items-center flex-wrap d-flex justify-content-evenly  ">
-              {version.map((version: any) => (
-                <ImgDoPokemon pokeName={version.name} filtro={filtroCor} />
-              ))}
-            </div>
+          onClick={() => setVersion(null)} className={`container ${styles.bodyModal}`}>
+          <div className="align-items-center flex-wrap d-flex justify-content-evenly">
+            {version.map((version: any) => (
+              <ImgDoPokemon pokeName={version.name} filtro={filtroCor} />
+            ))}
           </div>
         </div>
       )}
 
       {naoTem && (
-        <div onClick={() => { setNaoTem(false); setVersion(null) }}>
-          <Figure>
-            <Figure.Image
-              width={171}
-              height={180}
+        <div className='justify-content-center d-flex' onClick={() => { setNaoTem(false); setVersion(null) }}>
+          <Figure className={styles.blocoFigure}>
+            <Figure.Image className={styles.finalFigure2}
+              width={342}
+              height={360}
               alt="pokemon colisseum"
               src="https://cdn.discordapp.com/attachments/899759071056515082/903011660590088202/220px-PokC3A9mon_Colosseum_cover.png"
             />
             <Figure.Image className={styles.finalFigure}
-              width={171}
-              height={180}
+              width={342}
+              height={360}
               alt="pokemon xd"
               src="https://cdn.discordapp.com/attachments/899759071056515082/903011605393080360/220px-PokC3A9mon_XD_Gale_of_Darkness_cover.png"
             />

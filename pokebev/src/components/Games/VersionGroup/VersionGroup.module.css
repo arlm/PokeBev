@@ -20,13 +20,6 @@
     color: white;
 }
 
-.bodyModal{
-    background-color:#D8BFD8;
-    width: 100%;
-    height: 100%;
-    
-}
-
 .Modal{
     background-color: rgb(255,199,44) ;
     display: flex;
@@ -34,10 +27,11 @@
 }
 .headerCard{
     display: flex;
-    background-color:#9370DB;
+    background-color: #FFC629;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: black;
+    font-weight: bolder;
 }
 .card{
     background-color:#EAEAEA;
@@ -56,4 +50,7 @@
       background-color:#D8BFD8 ;
   }
   
+  .tabela1 {
+    margin-top: 2cm;
+  }
    
