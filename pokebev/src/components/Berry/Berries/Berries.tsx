@@ -1,7 +1,7 @@
 import  {useEffect, useState} from 'react'
 import Berry from '../Berry'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Berry.css'
+import styles from './Berries.module.css';
 
 
 function Berries() {
@@ -22,7 +22,7 @@ function Berries() {
     
     <div>
       <h1>Berries</h1>
-      <div className="Berries-List">
+      <div className={styles.BerriesList}>
         {
           berries.length > 0 && berries.map((berry: any) => <Berry name={berry.name} />) //se a primeira for falsa, para.
         }
