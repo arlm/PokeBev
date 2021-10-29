@@ -3,37 +3,55 @@ import './App.css';
 
 import Home from './components/Home/Home';
 import { Route, Switch, Link } from 'react-router-dom';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, Modal, ModalTitle, ModalBody } from 'react-bootstrap';
+import ModalHeader from "react-bootstrap/esm/ModalHeader";
 import Item from './components/Item/Item';
 import Contest from './components/Contest/Contest';
 import Games from './components/Games/Games';
-import Evolution from './components/Evolution/Evolution';
+import EvolutionChains from './components/EvolutionChains/EvolutionChains';
 import Location from './components/Location/Location';
 import Berries from './components/Berry/Berries/Berries';
 import Machine from './components/Machine/Machine';
 import Move from './components/Move/Move';
+import GroupDetails from './components/GroupDetails/GroupDetails';
+import { useState } from "react";
+import Pokebola from './components/Location/pokebola.gif';
+import styles from './components/Location/Location.module.css';
+
+import "./App.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 function AppPokemon() {
+  const [show, setShow] = useState(false);
   return (
     <div>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">PokeBev</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/Berries">Berries</Nav.Link>
-              <Nav.Link as={Link} to="/Contests">Contests</Nav.Link>
               <Nav.Link as={Link} to="/Evolution">Evolution</Nav.Link>
               <Nav.Link as={Link} to="/Games">Games</Nav.Link>
-              <Nav.Link as={Link} to="/Locations">Locations</Nav.Link>
+              <Nav.Link as={Link} to="#" onClick={() => setShow(true)}>Locations</Nav.Link>
               <Nav.Link as={Link} to="/Machine">Machine</Nav.Link>
-              <Nav.Link as={Link} to="/Moves">Moves</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
+          <ModalHeader closeButton>
+              <ModalTitle><img src={Pokebola} width={30}/> Locations </ModalTitle>
+          </ModalHeader>
+          <ModalBody className={styles.pokemap}>
+            <p>
+                <Location />
+            </p>
+          </ModalBody>
+      </Modal>
 
       <Switch>
         <Container >
@@ -47,7 +65,7 @@ function AppPokemon() {
             <Contest />
           </ Route>
           <Route exact path="/Evolution">
-            <Evolution />
+            <EvolutionChains />
           </ Route>
           <Route exact path="/Games">
             <Games />
@@ -63,6 +81,9 @@ function AppPokemon() {
           </ Route>
           <Route exact path="/Move">
             <Move />
+          </ Route>
+          <Route path="/GroupDetails/:groupName">
+            <GroupDetails />
           </ Route>
         </Container>
       </Switch>

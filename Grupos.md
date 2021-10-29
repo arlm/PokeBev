@@ -13,7 +13,7 @@ Implementar:
 ### Grupo 2 ⚡
 
 Implementar:
-- Encounters e Evolution
+- Evolution e encounters
 
 *Integrantes*
 - Cyro Renato
@@ -43,4 +43,4 @@ Implementar:
 - Emily Roberta
 - Izabela Gonzaga
 - Luana Kuster
-- Rafaela Bitencourt
+- Rafaela Bittencourt

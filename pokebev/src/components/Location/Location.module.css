@@ -1,1 +1,14 @@
-.Location {}
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.pokemap {
+    background-image: url(./mapa.png);
+    background-size: cover;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: white;
+}
+
+.pokemap input {
+    width: 220px;
+    opacity: .80;
+}

@@ -7,18 +7,9 @@
   font-size: large;
   border-radius: 20px;
 }
+
 * {
   box-sizing: border-box;
-}
-
-h1 {
-  color: #fff;
-  text-align: center;
-  margin: 50px;
-}
-
-img {
-  width: 40px;
 }
 
 .card1 {
