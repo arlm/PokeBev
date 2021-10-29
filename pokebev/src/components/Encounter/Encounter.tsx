@@ -94,7 +94,7 @@ function Encounter() {
       </section>
       <section className={styles.localPokemon}>
         <h2>Onde encontrar este Pokémon?</h2>
-        <Form className="d-flex">
+        <Form className="d-flex formulario">
           <FormControl
             type="search"
             placeholder="Digite o nome do Pokémon"
