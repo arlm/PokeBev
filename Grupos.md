@@ -43,4 +43,4 @@ Implementar:
 - Emily Roberta
 - Izabela Gonzaga
 - Luana Kuster
-- Rafaela Bitencourt
+- Rafaela Bittencourt
