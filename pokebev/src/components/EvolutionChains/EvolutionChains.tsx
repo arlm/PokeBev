@@ -19,11 +19,11 @@ const EvolutionChains = () => {
 
   return (
     <>
+      <Encounter></Encounter>
       <div className="Pokemon-List">
         {evolution.length > 0 &&
           evolution.map((pokemon) => <Evolution url={pokemon.url}></Evolution>)}
       </div>
-      <Encounter></Encounter>
     </>
   );
 };
