@@ -39,10 +39,10 @@ function Games() {
             <Card.Header className={styles.headerCard}>
               Gerações dos Pokemons
             </Card.Header>
-            <Card.Body className={styles.card}>
+            <Card.Body className={styles.card2}>
               <ListGroup variant="flush">
                 {generations.map((gen: string) => (
-                  <ListGroup.Item className={styles.card}
+                  <ListGroup.Item className={styles.card2}
                     key={gen}
                     onClick={() => getGeneration(gen)}
                   >
