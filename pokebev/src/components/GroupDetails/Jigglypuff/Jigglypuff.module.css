@@ -1,0 +1,19 @@
+.figura{
+    width: 480px;
+    height: 480px;
+}
+.ajuste{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.link{
+    text-decoration: none;
+    color: orangered;
+}
+
+.link:hover{
+    text-decoration: none;
+    color:red;
+}
