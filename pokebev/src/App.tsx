@@ -12,6 +12,7 @@ import Location from './components/Location/Location';
 import Berries from './components/Berry/Berries/Berries';
 import Machine from './components/Machine/Machine';
 import Move from './components/Move/Move';
+import GroupDetails from './components/GroupDetails/GroupDetails';
 
 import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -21,7 +22,7 @@ function AppPokemon() {
     <div>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">PokeBev</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -66,6 +67,9 @@ function AppPokemon() {
           </ Route>
           <Route exact path="/Move">
             <Move />
+          </ Route>
+          <Route path="/GroupDetails/:groupName">
+            <GroupDetails />
           </ Route>
         </Container>
       </Switch>
