@@ -43,7 +43,7 @@ function Version() {
     <div className={styles.tabela1}>
       {versions && !version && !loading && (
         <>
-          <Card className="border border-5 border-secondary mb-5" style={{ width: "60rem" }}>
+          <Card className="border border-5 border-secondary d-flex justify-content-center">
             <Card.Header className={styles.headerCard}>
               Versão dos Pokemons
             </Card.Header>
@@ -83,7 +83,7 @@ function Version() {
       )}
 
       {naoTem && (
-        <div onClick={() => { setNaoTem(false); setVersion(null) }}>
+        <div className='justify-content-center d-flex' onClick={() => { setNaoTem(false); setVersion(null) }}>
           <Figure className={styles.blocoFigure}>
             <Figure.Image className={styles.finalFigure2}
               width={342}

@@ -1,13 +1,10 @@
 .Games {
-    
+    display: flex;
+    align-items: center;
     background-color: white;
     color: black;
 }
 
 .nav-link  {
 color: rgba(0,0,0,.55) !important;
-}
-
-.botanucor {
-    color: tomato;
 }

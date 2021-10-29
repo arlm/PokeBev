@@ -27,10 +27,11 @@
 }
 .headerCard {
   display: flex;
-  background-color: #9370db;
-  align-items: center;
-  justify-content: center;
-  color: white;
+    background-color: #FFC629;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bolder;
  }
 .card {
   background-color: #eaeaea;
@@ -72,6 +73,7 @@
 .tabela1 {
   margin-top: 2cm;
 }
+
 .blocoFigure {
   background-color: white;
   height: 520px;
