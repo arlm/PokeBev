@@ -1,9 +1,13 @@
 .Games {
-    width: 100vw;
+    
     background-color: white;
     color: black;
 }
 
 .nav-link  {
 color: rgba(0,0,0,.55) !important;
+}
+
+.botanucor {
+    color: tomato;
 }

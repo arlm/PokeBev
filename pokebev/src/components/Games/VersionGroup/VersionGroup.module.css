@@ -20,13 +20,6 @@
     color: white;
 }
 
-.bodyModal{
-    background-color:#D8BFD8;
-    width: 100%;
-    height: 100%;
-    
-}
-
 .Modal{
     background-color: rgb(255,199,44) ;
     display: flex;
