@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PokeLoagind from "./loading.gif";
+import PokeLoagind from "../loading.gif";
 import styles from "./VersionGroup.module.css";
 import { Card, ListGroup } from "react-bootstrap";
 import ImgDoPokemon from "../../CardPokemon/CardPokemon";
@@ -8,7 +8,7 @@ function VersionGroup() {
   const [versions, setVersions] = useState<any>();
   const [version, setVersion] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [filtroCor, setFiltroCor] = useState<string []>([]);
+  const [filtroCor, setFiltroCor] = useState<string[]>([]);
 
   useEffect(() => {
     const pegaVersoes = async () => {
@@ -21,7 +21,7 @@ function VersionGroup() {
 
   const getVersionGroup = async (nameVersionGroup: any) => {
     setLoading(true);
-    
+
 
     try {
       const resposta = await fetch(
@@ -34,8 +34,8 @@ function VersionGroup() {
       const arrVersions: string[] = arrayVersionGroup.map(
         ({ name }: any) => name
       );
-       setFiltroCor(arrVersions);
-       
+      setFiltroCor(arrVersions);
+
       const respostaGroup = await fetch(
         "https://pokeapi.co/api/v2/pokemon/?limit=1118&offset=0"
       );
@@ -43,7 +43,7 @@ function VersionGroup() {
 
       setVersion(objAllPoke.results.reverse());
       setLoading(false);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (
@@ -84,7 +84,7 @@ function VersionGroup() {
           onClick={() => setVersion(null)}
           className={`container ${styles.bodyModal}`}
         >
-          <div className=" w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
+          <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
             <div className="align-items-center flex-wrap d-flex justify-content-evenly  ">
               {version.map((version: any) => (
                 <ImgDoPokemon pokeName={version.name} filtro={filtroCor} />

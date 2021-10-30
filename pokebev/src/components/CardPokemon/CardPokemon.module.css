@@ -1,7 +1,6 @@
 .status {
     display: flex;
     flex-direction: column;
-    
 }
 
 .status span {

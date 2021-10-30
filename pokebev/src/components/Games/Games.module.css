@@ -1,10 +1,86 @@
-.Games {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    color: black;
+:root {
+  --cor-principal: #FFC629;
 }
 
-.nav-link  {
-color: rgba(0,0,0,.55) !important;
+.Games {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: black;
+}
+
+.box {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.loading {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.loading img {
+  width: 250px;
+}
+
+.btnFechar {
+  position: fixed;
+  color: var(--cor-principal);
+  font-size: 26px;
+  margin-top: -25px;
+  justify-self: flex-end;
+  width: 78%;
+  text-align: end;
+  cursor: url('./yl_no.cur'), auto;	
+}
+
+.headerCard {
+  display: flex;
+  background-color: var(--cor-principal);
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-weight: bolder;
+}
+
+.cardBody {
+  background-color:#EAEAEA;
+  display: flex;
+  justify-content: center;
+}
+
+.cardItem {
+  background-color:#EAEAEA;
+  display: flex;
+  justify-content: center;
+  cursor: url('./pokeball.cur'), auto;
+}
+
+.cardItem:hover {
+  cursor: url('./pokeball.cur'), auto;
+  color: var(--cor-principal);
+}
+
+.mainBox {
+  margin-top: 4em;
+}
+
+.cardMenor {
+  height: 60px;
+  cursor: pointer;
+  position: relative;
+}
+  
+.cardBorder {
+  border: 5px solid #6c757d!important;
 }
