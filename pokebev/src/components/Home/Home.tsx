@@ -27,8 +27,8 @@ function Home() {
       <div className="d-flex flex-row">{
         grupos.map(
           (grupo) => (
-            <Link className="text-decoration-none" to={`/GroupDetails/${grupo.name}`}>
-              <Card className="p-4 m-2 d-flex justify-content-center align-items-center" style={{ width: '18rem', height: '24rem'}}>
+            <Link key={grupo.name} className="text-decoration-none" to={`/GroupDetails/${grupo.name}`}>
+              <Card className="p-4 m-2 d-flex justify-content-center align-items-center" style={{ width: '18rem', height: '24rem' }}>
                 <Card.Img className="h-75" variant="top" src={grupo.image} />
                 <Card.Body>
                   <Card.Title className="text-warning ">Grupo {grupo.name}</Card.Title>

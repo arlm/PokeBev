@@ -3,10 +3,12 @@
 }
 
 .Games {
-  display: flex;
-  align-items: center;
   background-color: white;
   color: black;
+}
+
+.Games>.nav-link  {
+  color: red;
 }
 
 .box {
@@ -82,5 +84,5 @@
 }
   
 .cardBorder {
-  border: 5px solid #6c757d!important;
+  border: 5px solid #6c757d;
 }

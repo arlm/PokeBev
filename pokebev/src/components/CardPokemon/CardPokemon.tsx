@@ -1,6 +1,12 @@
-import { useEffect, useState } from "react";
-import styles from "./CardPokemon.module.css";
+import { useRef, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
+import styles from "./CardPokemon.module.css";
+
+interface pokemonDadosTypes {
+  name: string,
+  sprites: string,
+  stats: object[]
+}
 
 function CardPokemon({
   pokeName,
@@ -10,66 +16,64 @@ function CardPokemon({
   filtro: string[];
 }) {
   const [pokeDados, setPokeDados] = useState<any>();
-  const [mostrarPokemonFiltrado, setMostrarPokemonFiltrado] = useState<Boolean>(true);
+  const mountedRef = useRef(true);
+  const pokemonEndPoint = 'https://pokeapi.co/api/v2/pokemon';
+
   useEffect(() => {
-    const pegaGeracoes = async () => {
-      const resposta = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokeName}`
-      );
-      const objPokemon = await resposta.json();
-      //   const appArr: String[] = objGenerations.results.map((gen: { name: String }) => gen.name)
-
-      const arrayIndices = objPokemon.game_indices;
-      const arrVersions: string[] = arrayIndices.map(
-        ({ version }: any) => version.name
-      );
-
+    const pegaPokemon = async () => {
+      const respostaAPI = await fetch(`${pokemonEndPoint}/${pokeName}`);
+      const objPokemon = await respostaAPI.json();
+      const arrVersions: string[] = objPokemon.game_indices
+        .map(({ version: { name } }: { version: { name: string } }) => name);
+      const pokemonDados: pokemonDadosTypes = {
+        name: objPokemon.name,
+        sprites: objPokemon.sprites.other["official-artwork"].front_default,
+        stats: objPokemon.stats
+      }
       if (filtro.length) {
         for (const item of filtro) {
           if (arrVersions.includes(item)) {
-            setMostrarPokemonFiltrado(true);
+            setPokeDados(pokemonDados);
             break;
           }
         }
+      } else {
+        setPokeDados(pokemonDados);
       }
-
-      setPokeDados(objPokemon);
     };
-    pegaGeracoes();
-  }, []);
+    pegaPokemon();
+    return () => { mountedRef.current = false }
+  }, [filtro, pokeName]);
 
   return (
     <>
-      {pokeDados && mostrarPokemonFiltrado && (
+      {pokeDados && (
         <Card
-          className="border border-5 border-secondary mb-5"
-          key={pokeDados.name}
+          className={styles.pokeCard}
           style={{ width: "18rem" }}
         >
           <Card.Img
             className={styles.bodyModal}
             variant="top"
-            src={pokeDados.sprites.other["official-artwork"].front_default}
-          />{" "}
+            src={pokeDados.sprites}
+          />
           <Card.Body>
-            <Card.Title className="d-flex justify-content-center">
-              {" "}
-              {pokeDados.name.toUpperCase()}
+            <Card.Title className={styles.cardTitle}>
+              <img className={styles.pokeGif} src={`https://www.smogon.com//dex/media/sprites/xy/${pokeDados.name}.gif`} alt={'Gif pokemon ' + pokeDados.name} />{pokeDados.name.toUpperCase()}
             </Card.Title>
             <Card.Text>
               <div className={styles.status}>
-                Status:
-                {pokeDados.stats.map((s: any) => (
-                  <>
-                    {" "}
-                    <p>
-                      {s.stat.name} {s.base_stat}
-                    </p>
+                {pokeDados.stats.map((stats: any, index: number) => (
+                  <div key={pokeDados.name + stats.stat.name}>
+                    <div>
+                      {stats.stat.name} {stats.base_stat}
+                    </div>
                     <span
-                      key={"stat" + s.stat.name}
-                      style={{ width: s.base_stat * 2 + "px" }}
+                      className={styles['status' + index]}
+                      key={"stat" + pokeDados.name + stats.stat.name}
+                      style={{ width: stats.base_stat * 2 + "px" }}
                     ></span>
-                  </>
+                  </div>
                 ))}
               </div>
             </Card.Text>

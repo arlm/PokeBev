@@ -4,33 +4,29 @@ import Pokedexes from "./Pokedexes/Pokedexes";
 import Generations from "./Generation/Generations";
 import styles from "./Games.module.css"
 import "./Games.css"
-import { Nav, Tabs, Tab } from "react-bootstrap";
+import { Tabs, Tab } from "react-bootstrap";
 
 export default function Games() {
   return (
     <div className='Games'>
-
       <Tabs
         defaultActiveKey="Generations"
         id="uncontrolled-tab-example"
         className={styles.Games}
       >
-        
         <Tab eventKey="Generations" title="Generations">
-        <Generations />
+          <Generations />
         </Tab>
         <Tab eventKey="Pokedexes" title="Pokedexes">
-        <Pokedexes />
+          <Pokedexes />
         </Tab>
         <Tab eventKey="Version" title="Version">
-        <Version />
+          <Version />
         </Tab>
         <Tab eventKey="Version-Group" title="Version-Group" >
-        <VersionGroup />
+          <VersionGroup />
         </Tab>
       </Tabs>
-
-    
     </div>
   );
 }

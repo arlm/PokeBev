@@ -1,75 +1,67 @@
-import { useEffect, useState } from "react";
-import PokeLoagind from "../loading.gif";
-import styles from "./Pokedexes.module.css";
-import { Card, ListGroup } from "react-bootstrap";
-import ImgDoPokemon from "../../CardPokemon/CardPokemon";
+import { useEffect, useState } from 'react';
+import PokeLoagind from '../loading.gif';
+import styles from '../Games.module.css';
+import CardPokemon from '../../CardPokemon/CardPokemon';
+import GamesCard from '../GamesCard/GamesCard';
 
 function Pokedexes() {
-  const [pokedexes, setPokedexes] = useState<any>();
-  const [pokedex, setPokedex] = useState<any>();
+  const [pokedexes, setPokedexes] = useState<string[]>([]);
+  const [pokedex, setPokedex] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const endPointPokedexex = 'https://pokeapi.co/api/v2/pokedex';
 
   useEffect(() => {
     const pegaPokedexes = async () => {
-      const resposta = await fetch("https://pokeapi.co/api/v2/pokedex");
-      const objPokedexes = await resposta.json();
-      setPokedexes(objPokedexes.results);
-    };
-    pegaPokedexes();
+      const respostaAPI = await fetch(endPointPokedexex);
+      const { results } = await respostaAPI.json();
+      const ArrPokedexes: string[] = results.map(({ name }: { name: string }) => name);
+      Array.isArray(ArrPokedexes) ? setPokedexes(ArrPokedexes) : setPokedexes([]);
+    }
+    try {
+      pegaPokedexes();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
-  const getPokedex = async (namePokedex: any) => {
+  const getPokedex = async (namePokedex: string) => {
     setLoading(true);
     try {
-      const resposta = await fetch(
-        `https://pokeapi.co/api/v2/pokedex/${namePokedex}`
-      );
-      const objPokedex = await resposta.json();
-      setPokedex(objPokedex.pokemon_entries);
+      const respostaAPI = await fetch(`${endPointPokedexex}/${namePokedex}`);
+      const { pokemon_entries } = await respostaAPI.json();
+      const ArrPokemons: string[] = pokemon_entries
+        .map(({ pokemon_species: { name } }: { pokemon_species: { name: string } }) => name);
+      Array.isArray(ArrPokemons) ? setPokedex(ArrPokemons) : setPokedex([]);
+    } catch (error) {
+      console.log(error);
+    } finally {
       setLoading(false);
-    } catch (error) { }
+    }
   };
 
   return (
-    <div className={styles.tabela1}>
-      {pokedexes && !pokedex && !loading && (
-        <>
-          <Card className="border border-5 border-secondary mb-5">
-            <Card.Header className={styles.headerCard}>
-              Pokedex
-            </Card.Header>
-            <Card.Body className={styles.card}>
-              <ListGroup variant="flush">
-                {pokedexes.map((gen: any) => (
-                  <ListGroup.Item className={styles.card}
-                    key={gen.name}
-                    onClick={() => getPokedex(gen.name)}
-                  >
-                    {gen.name.toUpperCase()}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card.Body>
-          </Card>
-        </>
+    <div className={styles.mainBox}>
+      {pokedexes.length && !pokedex.length && !loading && (
+        <GamesCard
+          titulo='Pokedex'
+          geterFunc={getPokedex}
+          arrayGames={pokedexes}
+        />
       )}
 
       {loading && (
         <div className={styles.loading}>
-          <img src={PokeLoagind} alt="Loading" />
+          <img src={PokeLoagind} alt='Loading' />
           <h1>Carregando... </h1>
         </div>
       )}
 
-      {pokedex && (
-        <div onClick={() => setPokedex(null)} className={`container ${styles.bodyModal}`}>
-          <div className=" w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
-            <div className="align-items-center flex-wrap d-flex justify-content-evenly  ">
-              {pokedex.map((pokemon: any) => (
-                <ImgDoPokemon pokeName={pokemon.pokemon_species.name} filtro={[]} />
-              ))}
-            </div>
-          </div>
+      {pokedex.length && (
+        <div className={styles.box}>
+          <div onClick={() => setPokedex([])} className={styles.btnFechar}>X</div>
+          {pokedex.map((pokemon: string) => (
+            <CardPokemon key={'cardPok' + pokemon} pokeName={pokemon} filtro={[]} />
+          ))}
         </div>
       )}
     </div>

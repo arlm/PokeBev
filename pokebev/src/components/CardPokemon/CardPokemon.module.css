@@ -1,57 +1,77 @@
+.pokeCard {
+    position: relative;
+    border: 5px solid #6c757d;
+    margin-bottom: 2em;
+}
+
+.cardTitle {
+    
+    text-align: center;
+}
+
+.pokeGif {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    min-width: 60px;
+}
+
 .status {
     display: flex;
     flex-direction: column;
 }
 
 .status span {
-    margin: 3px;
+    padding: 4px;
     display: block;
-    background-color: aqua;
     height:5px ;
-    max-width: 200px;
+    max-width: 230px;
+    width: var(--radius);
 }
 
-.status span:nth-child(2) {
+.status0 {
     background-color: rgb(82, 224, 141);
     animation: statusbar 0.9s ease infinite alternate;
 }
 
-.status span:nth-child(4) {
+.status1 {
     background-color: rgb(211, 63, 43);
     animation: statusbar 0.8s ease infinite alternate;
 }
 
-.status span:nth-child(6) {
+.status2 {
     background-color: rgb(111, 187, 231);
     animation: statusbar 1.1s ease infinite alternate;
 }
 
-.status span:nth-child(8) {
+.status3 {
     background-color: rgb(245, 213, 33);
     animation: statusbar 0.7s ease infinite alternate;
 }
 
-.status span:nth-child(10) {
+.status4 {
     background-color: rgb(246, 77, 246);
     animation: statusbar 0.6s ease infinite alternate;
 }
 
-.status span:nth-child(12) {
+.status5 {
     background-color: rgb(168, 255, 251);
     animation: statusbar 1.1s ease infinite alternate;
 }
-.status span:nth-child(14) {
+.status6 {
     background-color: rgb(202, 202, 202);
     animation: statusbar 0.95s ease infinite alternate;
 }
 
 @keyframes statusbar {
     0% {
-        transform: scaleX(1) translateX(0px);
+        transform: scaleX(1);
+        transform-origin:left center;
         opacity: 0.8;
       }
       100% {
-        transform: scaleX(1.03) translateX(5px);
+        transform: scaleX(1.04);
+        transform-origin:left center;
 
       }
 }

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Card, ListGroup } from 'react-bootstrap';
+import GamesCard from '../GamesCard/GamesCard';
 import PokeLoagind from '../loading.gif';
-import styles from '../Games.module.css';
+import styles from "../Games.module.css";
 import CardPokemon from '../../CardPokemon/CardPokemon';
 
 function Games() {
   const [generations, setGenerations] = useState<string[]>([]);
-  const [generation, setGeneration] = useState<string[]>([]);
+  const [pokemonsOfGeneration, setPokemonsOfGeneration] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const endPointGenerations = 'https://pokeapi.co/api/v2/generation';
 
@@ -14,13 +14,16 @@ function Games() {
     const pegaGeracoes = async () => {
       const respostaAPI = await fetch(endPointGenerations);
       const { results } = await respostaAPI.json();
-      const ArrGenerations: string[] = results.map(({ name }: { name: string }) => name);
-      Array.isArray(ArrGenerations) ? setGenerations(ArrGenerations) : setGenerations([]);
-    };
+      const ArrGenerations: string[] = results
+        .map(({ name }: { name: string }) => name);
+      Array.isArray(ArrGenerations) ?
+        setGenerations(ArrGenerations) :
+        setGenerations([]);
+    }
     try {
       pegaGeracoes();
     } catch (error) {
-      console.log(error);
+      console.log(error, 'Em Generations.');
     }
   }, []);
 
@@ -30,9 +33,11 @@ function Games() {
       const respostaAPI = await fetch(`${endPointGenerations}/${nameGeneration}`);
       const { pokemon_species } = await respostaAPI.json();
       const ArrPokemons: string[] = pokemon_species.map(({ name }: { name: string }) => name);
-      Array.isArray(ArrPokemons) ? setGenerations(ArrPokemons) : setGenerations([]);
+      Array.isArray(ArrPokemons) ?
+        setPokemonsOfGeneration(ArrPokemons) :
+        setPokemonsOfGeneration([]);
     } catch (error) {
-      console.log(error);
+      console.log(error, 'em Generetions - getGeneration');
     } finally {
       setLoading(false);
     }
@@ -40,26 +45,12 @@ function Games() {
 
   return (
     <main className={styles.mainBox}>
-      {generations.length && !generation.length && !loading &&
-        <>
-          <Card className={styles.cardBorder}>
-            <Card.Header className={styles.headerCard}>
-              Gerações dos Pokemons
-            </Card.Header>
-            <Card.Body className={styles.cardBody}>
-              <ListGroup variant='flush'>
-                {generations.map((generation: string) => (
-                  <ListGroup.Item className={styles.cardItem}
-                    key={generation}
-                    onClick={() => getGeneration(generation)}
-                  >
-                    {generation.toUpperCase()}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card.Body>
-          </Card>
-        </>
+      {generations.length && !pokemonsOfGeneration.length && !loading &&
+        <GamesCard
+          titulo='Gerações dos Pokemons'
+          geterFunc={getGeneration}
+          arrayGames={generations}
+        />
       }
 
       {loading &&
@@ -69,11 +60,11 @@ function Games() {
         </div>
       }
 
-      {generation.length &&
+      {pokemonsOfGeneration.length &&
         <div className={styles.box}>
-          <div onClick={() => setGeneration([])} className={styles.btnFechar}>X</div>
-          {generation.map((pokemon: string) => (
-            <CardPokemon pokeName={pokemon} filtro={[]} />
+          <div onClick={() => setPokemonsOfGeneration([])} className={styles.btnFechar}>X</div>
+          {pokemonsOfGeneration.map((pokemon: string) => (
+            <CardPokemon key={'cardGen' + pokemon} pokeName={pokemon} filtro={[]} />
           ))}
         </div>
       }

@@ -1,67 +1,64 @@
 import { useEffect, useState } from "react";
 import PokeLoagind from "../loading.gif";
-import styles from "./Version.module.css";
-import { Card, Figure, ListGroup } from "react-bootstrap";
-import ImgDoPokemon from "../../CardPokemon/CardPokemon";
-import FigureCaption from 'react-bootstrap/FigureCaption'
+import styles from "../Games.module.css";
+import { Figure } from "react-bootstrap";
+import GamesCard from "../GamesCard/GamesCard";
+import CardPokemon from "../../CardPokemon/CardPokemon";
 
 function Version() {
-  const [versions, setVersions] = useState<any>();
-  const [version, setVersion] = useState<any>();
-  const [loading, setLoading] = useState<boolean>(false);
+  const [versionsNames, setVersionsNames] = useState<string[]>([]);
+  const [pokemonsOfVersion, setPokemonsOfVersion] = useState<string[]>([]);
   const [filtroCor, setFiltroCor] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const [naoTem, setNaoTem] = useState<boolean>(false);
+  const versionsEndPoint = 'https://pokeapi.co/api/v2/version';
+  const allPokemonsEndPoint = 'https://pokeapi.co/api/v2/pokemon/?limit=1118&offset=0';
 
   useEffect(() => {
     const pegaVersoes = async () => {
-      const resposta = await fetch("https://pokeapi.co/api/v2/version");
-      const objVersions = await resposta.json();
-      setVersions(objVersions.results);
+      const respostaAPI = await fetch(versionsEndPoint);
+      const { results } = await respostaAPI.json();
+      const arrVersionsNames: string[] = results.map(({ name }: { name: string }) => name);
+      Array.isArray(arrVersionsNames) ?
+        setVersionsNames(arrVersionsNames) :
+        setVersionsNames([]);
     };
-    pegaVersoes();
+    try {
+      pegaVersoes();
+    } catch (error) {
+      console.log(error, 'Em Versions.');
+    }
   }, []);
 
-  const getVersion = async (nameVersion: any) => {
+  const getVersion = async (nameVersion: string) => {
     if (nameVersion === "colosseum" || nameVersion === "xd") {
       setNaoTem(true);
-      setVersion([{}]);
+      setPokemonsOfVersion([]);
       return;
     }
     setLoading(true);
     setFiltroCor([nameVersion]);
     try {
-      const resposta = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/?limit=1118&offset=0"
-      );
-      const objVersion = await resposta.json();
-      setVersion(objVersion.results.reverse());
+      const respostaAPI = await fetch(allPokemonsEndPoint);
+      const { results } = await respostaAPI.json();
+      const ArrPokemons: string[] = results
+        .map(({ name }: { name: string }) => name)
+        .reverse();
+      setPokemonsOfVersion(ArrPokemons);
       setLoading(false);
-    } catch (error) { }
+    } catch (error) {
+      console.log(error, 'Em Version getVersion.');
+    }
   };
 
   return (
-    <div className={styles.tabela1}>
-      {versions && !version && !loading && (
-        <>
-          <Card className="border border-5 border-secondary d-flex justify-content-center">
-            <Card.Header className={styles.headerCard}>
-              Versão dos Pokemons
-            </Card.Header>
-            <Card.Body className={styles.card}>
-              <ListGroup variant="flush">
-                {versions.map((gen: any) => (
-                  <ListGroup.Item
-                    className={styles.card}
-                    key={gen.name}
-                    onClick={() => getVersion(gen.name)}
-                  >
-                    {gen.name.toUpperCase()}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card.Body>
-          </Card>
-        </>
+    <div className={styles.mainBox}>
+      {versionsNames.length && !pokemonsOfVersion.length && !loading && (
+        <GamesCard
+          titulo='Versão dos Pokemons'
+          geterFunc={getVersion}
+          arrayGames={versionsNames}
+        />
       )}
 
       {loading && (
@@ -71,19 +68,17 @@ function Version() {
         </div>
       )}
 
-      {version && (
-        <div
-          onClick={() => setVersion(null)} className={`container ${styles.bodyModal}`}>
-          <div className="align-items-center flex-wrap d-flex justify-content-evenly">
-            {version.map((version: any) => (
-              <ImgDoPokemon pokeName={version.name} filtro={filtroCor} />
-            ))}
-          </div>
+      {pokemonsOfVersion.length && (
+        <div className={styles.box}>
+          <div onClick={() => setPokemonsOfVersion([])} className={styles.btnFechar}>X</div>
+          {pokemonsOfVersion.map((pokemon: string) => (
+            <CardPokemon key={'cardV' + pokemon} pokeName={pokemon} filtro={filtroCor} />
+          ))}
         </div>
       )}
 
       {naoTem && (
-        <div className='justify-content-center d-flex' onClick={() => { setNaoTem(false); setVersion(null) }}>
+        <div className='justify-content-center d-flex' onClick={() => { setNaoTem(false); setPokemonsOfVersion([]) }}>
           <Figure className={styles.blocoFigure}>
             <Figure.Image className={styles.finalFigure2}
               width={342}
