@@ -5,11 +5,11 @@ function Bulbasaur() {
     <>
       <p>
         <h1>Responsáveis pelo desenvolvimento do componente <a className={styles.link} href="/Berries" >Berries</a></h1>
-        
       </p>
       <div className="d-flex flex-row justify-content-center">
         <div className={styles.ajuste}>
           <img
+            alt='Grupo Bulbasaur'
             className={styles.figura}
             src="https://media3.giphy.com/media/I2nZMy0sI0ySA/giphy.gif?cid=790b761124fd093d203c583ec2b32049954e0f065deaba1a&rid=giphy.gif&ct=g"
           ></img>

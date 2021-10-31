@@ -8,4 +8,10 @@
 
 .Games .nav-link:focus {
     color: #EAEAEA;
+    text-shadow: 1px 1px 1px black;
+}
+
+.Games .nav-link:active {
+    color: #EAEAEA;
+    text-shadow: 1px 1px 1px black;
 }

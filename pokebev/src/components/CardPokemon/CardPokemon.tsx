@@ -1,81 +1,79 @@
-import { ReactElement, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
+import { Card } from "react-bootstrap";
 import styles from "./CardPokemon.module.css";
-import { Card, ListGroup } from "react-bootstrap";
 
-function ImgDoPokemon({
+interface pokemonDadosTypes {
+  name: string,
+  sprites: string,
+  stats: object[]
+}
+
+function CardPokemon({
   pokeName,
   filtro,
 }: {
   pokeName: string;
-  filtro?: any;
+  filtro: string[];
 }) {
   const [pokeDados, setPokeDados] = useState<any>();
-  const [mostrar, setMostrar] = useState<Boolean>(false);
-  /**como cada card ta recebendo so o nome, vamos passar isso como props para nosso novo componente, cada card vai fazer o fetch usando o nome q recebemos. Então a cada pokemon ele vai fazer um fetch, para isso precisamos de useEffect*/
+  const mountedRef = useRef(true);
+  const pokemonEndPoint = 'https://pokeapi.co/api/v2/pokemon';
+
   useEffect(() => {
-    const pegaGeracoes = async () => {
-      const resposta = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokeName}`
-      ); //**pegando cada nome do card e fazendo essa procura pelo nome na API  */
-      const objPokemon =
-        await resposta.json(); /**transformando em obj legivel */
-      //   const appArr: String[] = objGenerations.results.map((gen: { name: String }) => gen.name)
-
-      const arrayIndices = objPokemon.game_indices;
-
-      const arrVersions: string[] = arrayIndices.map(
-        ({ version }: any) => version.name
-      );
-      if (filtro && filtro.length) {
+    const pegaPokemon = async () => {
+      const respostaAPI = await fetch(`${pokemonEndPoint}/${pokeName}`);
+      const objPokemon = await respostaAPI.json();
+      const arrVersions: string[] = objPokemon.game_indices
+        .map(({ version: { name } }: { version: { name: string } }) => name);
+      const pokemonDados: pokemonDadosTypes = {
+        name: objPokemon.name,
+        sprites: objPokemon.sprites.other["official-artwork"].front_default,
+        stats: objPokemon.stats
+      }
+      if (filtro.length) {
         for (const item of filtro) {
           if (arrVersions.includes(item)) {
-            // condicional criada p filtro dos pokemons por versao (ex.: red)
-            setMostrar(true);
-            break
+            setPokeDados(pokemonDados);
+            break;
           }
         }
       } else {
-        setMostrar(true);
+        setPokeDados(pokemonDados);
       }
-
-      setPokeDados(objPokemon);
     };
-    pegaGeracoes(); /** chamar a função q escrevemos acima*/
-  }, []);
+    pegaPokemon();
+    return () => { mountedRef.current = false }
+  }, [filtro, pokeName]);
 
   return (
     <>
-      {mostrar && pokeDados && (
+      {pokeDados && (
         <Card
-          className="border border-5 border-secondary mb-5"
-          key={pokeDados.name}
+          className={styles.pokeCard}
           style={{ width: "18rem" }}
         >
           <Card.Img
             className={styles.bodyModal}
             variant="top"
-            src={pokeDados.sprites.other["official-artwork"].front_default}
-          />{" "}
-          {/**pegando a imagem da api*/}
+            src={pokeDados.sprites}
+          />
           <Card.Body>
-            <Card.Title className="d-flex justify-content-center">
-              {" "}
-              {pokeDados.name.toUpperCase()}
+            <Card.Title className={styles.cardTitle}>
+              <img className={styles.pokeGif} src={`https://www.smogon.com//dex/media/sprites/xy/${pokeDados.name}.gif`} alt={'Gif pokemon ' + pokeDados.name} />{pokeDados.name.toUpperCase()}
             </Card.Title>
             <Card.Text>
               <div className={styles.status}>
-                Status:
-                {pokeDados.stats.map((s: any) => (
-                  <>
-                    {" "}
-                    <p>
-                      {s.stat.name} {s.base_stat}
-                    </p>
+                {pokeDados.stats.map((stats: any, index: number) => (
+                  <div key={pokeDados.name + stats.stat.name}>
+                    <div>
+                      {stats.stat.name} {stats.base_stat}
+                    </div>
                     <span
-                      key={"stat" + s.stat.name}
-                      style={{ width: s.base_stat * 2 + "px" }}
+                      className={styles['status' + index]}
+                      key={"stat" + pokeDados.name + stats.stat.name}
+                      style={{ width: stats.base_stat * 2 + "px" }}
                     ></span>
-                  </>
+                  </div>
                 ))}
               </div>
             </Card.Text>
@@ -86,4 +84,4 @@ function ImgDoPokemon({
   );
 }
 
-export default ImgDoPokemon;
+export default CardPokemon;

@@ -45,14 +45,14 @@ function AppPokemon() {
       </Navbar>
 
       <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
-          <ModalHeader closeButton>
-              <ModalTitle><img src={Pokebola} width={30}/> Locations </ModalTitle>
-          </ModalHeader>
-          <ModalBody className={styles.pokemap}>
-            <p>
-                <Location />
-            </p>
-          </ModalBody>
+        <ModalHeader closeButton>
+          <ModalTitle><img src={Pokebola} width={30} alt='Pokebola' /> Locations </ModalTitle>
+        </ModalHeader>
+        <ModalBody className={styles.pokemap}>
+          <p>
+            <Location />
+          </p>
+        </ModalBody>
       </Modal>
 
       <Switch>
