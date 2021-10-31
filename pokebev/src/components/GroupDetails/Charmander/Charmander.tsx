@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import styles from './Charmander.module.css';
 
 function Charmander() {
   return (
     <>
       <p>
-        <h1>Responsáveis pelo desenvolvimento do componente <a className={styles.link} href='/Games' >Games</a></h1>
+        <h1>Responsáveis pelo desenvolvimento do componente <Link className="link" to='/Berries'>Games</Link></h1>
 
       </p>
       <div className='d-flex flex-row justify-content-center'>

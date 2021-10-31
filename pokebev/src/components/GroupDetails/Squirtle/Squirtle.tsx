@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import styles from "./Squirtle.module.css";
 
 function Squirtle() {
   return (
     <>
       <p>
-        <h1>Responsáveis pelo desenvolvimento dos componentes <a className={styles.link} href="/Evolution" >Evolution</a> e <a className={styles.link} href="/Encounter" >Encounter</a></h1>
+        <h1>Responsáveis pelo desenvolvimento dos componentes <Link className="link" to='/Evolution'>Evolution</Link> e <Link className="link" to='/Encounter'>Encounter</Link></h1>
       </p>
       <div className="d-flex flex-row justify-content-center">
         <div className={styles.ajuste}>
