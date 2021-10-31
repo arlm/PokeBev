@@ -37,6 +37,7 @@ function AppPokemon() {
               <Nav.Link as={Link} to="/Evolution">Evolution</Nav.Link>
               <Nav.Link as={Link} to="/Encounter">Encounter</Nav.Link>
               <Nav.Link as={Link} to="/Games">Games</Nav.Link>
+              <Nav.Link as={Link} to="/Item">Itens</Nav.Link>
               <Nav.Link as={Link} to="#" onClick={() => setShow(true)}>Locations</Nav.Link>
               <Nav.Link as={Link} to="/Machine">Machine</Nav.Link>
             </Nav>

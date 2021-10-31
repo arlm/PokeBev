@@ -1,11 +1,18 @@
+import { Modal, ModalBody, ModalTitle } from "react-bootstrap";
+import ModalHeader from "react-bootstrap/esm/ModalHeader";
 import { Link } from "react-router-dom";
 import styles from "./Jigglypuff.module.css";
+import Location from '../../Location/Location';
+import { useState } from "react";
+import Pokebola from '../../Location/pokebola.gif';
+import stylesModal from '../../Location/Location.module.css';
 
 function Jigglypuff() {
+  const [show, setShow] = useState(false);
   return (
     <>
       <p>
-        <h1>Responsáveis pelo desenvolvimento do componentes <Link className="link" to='/Machine'>Machines</Link> e Locations (clicar no menu acima) </h1>
+        <h1>Responsáveis pelo desenvolvimento do componentes <Link className="link" to='/Machine'>Machines</Link> e <Link to="#" onClick={() => setShow(true)}>Locations</Link></h1>
         Locations e Machines
       </p>
       <div className="d-flex flex-row justify-content-center">
@@ -31,6 +38,16 @@ function Jigglypuff() {
           </p>
         </div>
       </div>
+      <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
+        <ModalHeader closeButton>
+          <ModalTitle><img src={Pokebola} width={30} alt='Pokebola' /> Locations </ModalTitle>
+        </ModalHeader>
+        <ModalBody className={stylesModal.pokemap}>
+          <p>
+            <Location />
+          </p>
+        </ModalBody>
+      </Modal>
     </>
   );
 }
