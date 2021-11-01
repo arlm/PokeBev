@@ -86,3 +86,33 @@
 .cardBorder {
   border: 5px solid #6c757d;
 }
+
+.FigureCaption {
+  color: black;
+  font-size: xx-large;
+  margin-left: 1.3cm;
+}
+
+.finalFigure {
+  margin-top: 1cm;
+  margin-left: 2cm;
+  height: 342px;
+  width: auto;
+}
+
+.finalFigure2 {
+  margin-top: 0.9cm;
+  margin-left: 3cm;
+  height: 342px;
+  width: auto;
+}
+
+.tabela1 {
+  margin-top: 2cm;
+}
+
+.blocoFigure {
+  background-color: white;
+  height: 520px;
+  width: 800px;
+}

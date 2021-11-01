@@ -13,7 +13,6 @@ function Jigglypuff() {
     <>
       <p>
         <h1>Responsáveis pelo desenvolvimento do componentes <Link className="link" to='/Machine'>Machines</Link> e <Link to="#" onClick={() => setShow(true)}>Locations</Link></h1>
-        Locations e Machines
       </p>
       <div className="d-flex flex-row justify-content-center">
         <div className={styles.ajuste}>
