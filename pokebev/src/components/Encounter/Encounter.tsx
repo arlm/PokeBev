@@ -37,7 +37,6 @@ function Encounter() {
       )
       const objtEncounters = await resposta.json()
       setListEncounters(objtEncounters.results)
-      //console.log(encounterList)
     }
     showEncounters()
   }, [])
@@ -55,16 +54,16 @@ function Encounter() {
       console.log(encounterDetails)
 
       setEncountersDetails(encounterDetailsObj)
+      console.log(
+        encounterDetailsObj[0].version_details[0].encounter_details[0].condition_values.lenght)
 
       if (encounterDetailsObj.length == 0) {
         setErro(true)
-        setNamePokemon("")
         return
       }
-
-      setNamePokemon("")
     } catch (error) {
       setErro(true)
+    } finally {
       setNamePokemon("")
     }
   }
@@ -92,13 +91,14 @@ function Encounter() {
         )}
       </section>
       <section className={styles.localPokemon}>
-        <h2>Onde encontrar este Pokémon?</h2>
-        <Form className="d-flex mb-2">
+        <h3>Onde encontrar este Pokémon?</h3>
+        <Form className="d-flex justify-content-center  mb-2">
           <FormControl
             type="search"
             placeholder="Digite o nome do Pokémon"
             className="me-2"
             aria-label="Pesquisar"
+            value={namePokemon}
             onChange={(e) => setNamePokemon(e.target.value)}
           />
           <Button
@@ -110,7 +110,7 @@ function Encounter() {
         </Form>
         {erro && (
           <Alert variant="danger">
-            Ops, parece que não sabemos como encontrar este pokémon.
+            Ops, parece que não sabemos como encontrar o pokémon {namePokemon}.
           </Alert>
         )}
         {!erro && (
@@ -123,12 +123,15 @@ function Encounter() {
                 <div>
                   <h4>Métodos</h4>
                   <p className={styles.capitalize}>
+                    {" "}
+                    1.
                     {item.version_details[0].encounter_details[0]?.method?.name.replace(
                       /[-]/g,
                       " "
                     )}
                   </p>
                   <p className={styles.capitalize}>
+                    2.{" "}
                     {item.version_details[0].encounter_details[1]?.method?.name.replace(
                       /[-]/g,
                       " "
@@ -138,16 +141,16 @@ function Encounter() {
                 <div>
                   <h4>Condições</h4>
                   <p className={styles.capitalize}>
-                    {item.version_details[0].encounter_details[1]?.condition_values[0]?.name.replace(
+                    1.{" "}
+                    {item.version_details[0].encounter_details[0]?.condition_values[0]?.name.replace(
                       /[-]/g,
                       " "
                     )}
                   </p>
                   <p className={styles.capitalize}>
-                    {item.version_details[0].encounter_details[0]?.condition_values[0]?.name.replace(
-                      /[-]/g,
-                      " "
-                    )}
+                    2.{" "}
+                   {item.version_details[0].encounter_details[1]?.condition_values[0]?.name.replace(/[-]/g," ")}
+                  
                   </p>
                 </div>
               </div>

@@ -3,15 +3,13 @@
   align-items: center;
   padding: 30px;
   flex-direction: column;
-  float: left;
   width: 350px;
   height: 500px;
-  margin: 10px;
-
-  border: 1px solid;
-  border-radius: 10%;
-  border-bottom: solid;
-  background-color: #e6d0f4;
+  margin: 8% 0;
+  border: 1px solid white;
+  border-radius: 5%;
+  background-color: #f5f4f4;
+  filter: drop-shadow(0rem 0.1rem 0.1rem rgba(255, 255, 255, 0.8));
 }
 .PokemonBase {
   width: fit-content;
