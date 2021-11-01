@@ -16,21 +16,21 @@ const EvolutionChains = () => {
     fetch("https://pokeapi.co/api/v2/evolution-chain/?offset=1&limit=897")
     .then((response) => response.json())
     .then((data) => setEvolution(data.results))
-    // .finally(setLoading(false))
+    .finally(() => {setTimeout(() => {setLoading(false)}, 3500)})
   }
   
   useEffect(() => {
     setLoading(true)
     loadData()
-    setLoading(false)
+    
   }, [])
 
   return (
     <>
-      <div className={styles.PokemonList}>
+      {!loading &&(<div className={styles.PokemonList}>
         {evolution.length > 0 &&
           evolution.map((pokemon) => <Evolution url={pokemon.url}></Evolution>)}
-      </div>
+      </div>)}
       {loading && (
         <div className={styles.loading}>
           <img src={loadingSquirtle} alt="Loading" />
