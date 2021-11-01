@@ -79,10 +79,9 @@ function Encounter() {
               {encounterList.map((enc) => (
                 <Col>
                   <Card>
-                    {/* <Card.Img variant="top" src="procurar no google imagens???" /> */}
                     <Card.Body>
-                      <Card.Title>
-                        {enc.name.charAt(0).toUpperCase() + enc.name.slice(1)}
+                      <Card.Title className={styles.capitalize}>
+                        {enc.name}
                       </Card.Title>
                     </Card.Body>
                   </Card>
@@ -118,46 +117,37 @@ function Encounter() {
           <div className={styles.list}>
             {encounterDetails.map((item: any) => (
               <div className={styles.cardbox}>
-                <h3 key={item.location_area.name}>
-                  {item.location_area.name.charAt(0).toUpperCase() +
-                    item.location_area.name.slice(1).replace(/[-]/g, " ")}
+                <h3 className={styles.capitalize} key={item.location_area.name}>
+                  {item.location_area.name.replace(/[-]/g, " ")}
                 </h3>
                 <div>
                   <h4>Métodos</h4>
-                  <p>
-                    {item.version_details[0].encounter_details[0]?.method?.name
-                      .charAt(0)
-                      .toUpperCase() +
-                      item.version_details[0].encounter_details[0]?.method?.name
-                        .slice(1)
-                        .replace(/[-]/g, " ")}
+                  <p className={styles.capitalize}>
+                    {item.version_details[0].encounter_details[0]?.method?.name.replace(
+                      /[-]/g,
+                      " "
+                    )}
                   </p>
-                  <p>
-                    {item.version_details[0].encounter_details[1]?.method?.name
-                      .charAt(0)
-                      .toUpperCase() +
-                      item.version_details[0].encounter_details[1]?.method?.name
-                        .slice(1)
-                        .replace(/[-]/g, " ")}
+                  <p className={styles.capitalize}>
+                    {item.version_details[0].encounter_details[1]?.method?.name.replace(
+                      /[-]/g,
+                      " "
+                    )}
                   </p>
                 </div>
                 <div>
                   <h4>Condições</h4>
-                  <p>
-                    {item.version_details[0].encounter_details[1]?.condition_values[0]?.name
-                      .charAt(0)
-                      .toUpperCase() +
-                      item.version_details[0].encounter_details[1]?.condition_values[0]?.name
-                        .slice(1)
-                        .replace(/[-]/g, " ")}
+                  <p className={styles.capitalize}>
+                    {item.version_details[0].encounter_details[1]?.condition_values[0]?.name.replace(
+                      /[-]/g,
+                      " "
+                    )}
                   </p>
-                  <p>
-                    {item.version_details[0].encounter_details[0]?.condition_values[0]?.name
-                      .charAt(0)
-                      .toUpperCase() +
-                      item.version_details[0].encounter_details[0]?.condition_values[0]?.name
-                        .slice(1)
-                        .replace(/[-]/g, " ")}
+                  <p className={styles.capitalize}>
+                    {item.version_details[0].encounter_details[0]?.condition_values[0]?.name.replace(
+                      /[-]/g,
+                      " "
+                    )}
                   </p>
                 </div>
               </div>

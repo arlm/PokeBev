@@ -1,19 +1,30 @@
-.figura{
-    width: auto;
-    height: 480px;
+.figura {
+  width: auto;
+  height: 350px;
 }
-.ajuste{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.link{
-    text-decoration: none;
-    color: orangered;
+.ajuste {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.link:hover{
-    text-decoration: none;
-    color:red;
+.link {
+  text-decoration: none;
+  color: orangered;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: red;
+}
+
+.lista li {
+  list-style-type: none;
+  color: white;
+  font-size: 28px;
+  margin: 15px;
+}
+.lista img {
+  margin-right: 10px;
+  border-radius: 50%;
 }
