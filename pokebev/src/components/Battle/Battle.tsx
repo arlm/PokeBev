@@ -74,7 +74,7 @@ function Battle() {
             }
             setDesafiante(pokemonDados);
         } catch (error) {
-
+            alert("Não foi possível achar o desafiante, tente novamente");
         }
     }
 
