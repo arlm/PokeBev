@@ -12,15 +12,14 @@ import EvolutionChains from './components/EvolutionChains/EvolutionChains';
 import Location from './components/Location/Location';
 import Berries from './components/Berry/Berries/Berries';
 import Machine from './components/Machine/Machine';
-import Move from './components/Move/Move';
 import GroupDetails from './components/GroupDetails/GroupDetails';
 import { useState } from "react";
 import Pokebola from './components/Location/pokebola.gif';
 import styles from './components/Location/Location.module.css';
-
+import Encounter from './components/Encounter/Encounter';
+import Battle from './components/Battle/Battle';
 import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import Encounter from './components/Encounter/Encounter';
 
 function AppPokemon() {
   const [show, setShow] = useState(false);
@@ -40,6 +39,7 @@ function AppPokemon() {
               <Nav.Link as={Link} to="/Item">Itens</Nav.Link>
               <Nav.Link as={Link} to="#" onClick={() => setShow(true)}>Locations</Nav.Link>
               <Nav.Link as={Link} to="/Machine">Machine</Nav.Link>
+              <Nav.Link as={Link} to="/Battle">Battle</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -85,8 +85,8 @@ function AppPokemon() {
           <Route exact path="/Machine">
             <Machine />
           </ Route>
-          <Route exact path="/Move">
-            <Move />
+          <Route exact path="/Battle">
+            <Battle />
           </ Route>
           <Route path="/GroupDetails/:groupName">
             <GroupDetails />
