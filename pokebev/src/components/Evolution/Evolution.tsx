@@ -25,13 +25,13 @@ function Evolution(params: PokemonDataEvolution) {
     return <div>Aguarde</div>
   } else {
     const metaBaseUrl =
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/"
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
     const pokeBaseUrl = evolucao.chain.species.url
     const metaEvolutionUrl =
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
     var urlAlt = evolucao.chain.evolves_to[0]?.species.url //Estou pegando a evolução do meu pokemon
 
-    const srcBaseImg = metaBaseUrl + splitUrl(pokeBaseUrl) + ".svg"
+    const srcBaseImg = metaBaseUrl + splitUrl(pokeBaseUrl) + ".png"
 
     const pokeNameBase = evolucao.chain.species.name
     const chainSecound = evolucao.chain.evolves_to[0]?.evolves_to[0]
