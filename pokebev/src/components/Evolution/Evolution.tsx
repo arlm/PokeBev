@@ -33,6 +33,13 @@ function Evolution(params: PokemonDataEvolution) {
 
     const srcBaseImg = metaBaseUrl + splitUrl(pokeBaseUrl) + ".svg"
 
+    function addDefaultSrc(ev) {
+      return(
+        <p>Deu ruim</p>
+      )
+      // ev.target.src = 'some default image url'
+    }
+
     const pokeNameBase = evolucao.chain.species.name
     const chainSecound = evolucao.chain.evolves_to[0]?.evolves_to[0]
     const pokeNameSecound =
@@ -57,6 +64,7 @@ function Evolution(params: PokemonDataEvolution) {
                 onClick={() => setOpenModal(!openModal)}
                 className={styles.PokemonBase}
                 alt={pokeNameBase}
+                onError={(ev) => addDefaultSrc(ev.target)}
                 src={srcBaseImg}
               />
               <h3 className={styles.uppercase}>{pokeNameBase}</h3>
@@ -95,6 +103,7 @@ function Evolution(params: PokemonDataEvolution) {
                 className={styles.PokemonBase}
                 alt={pokeNameBase}
                 src={srcBaseImg}
+                onError={(ev) => addDefaultSrc(ev.target)}
               />
               <h3 className={styles.uppercase}>{pokeNameBase}</h3>
               {openModal && (
