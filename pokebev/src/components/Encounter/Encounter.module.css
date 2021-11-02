@@ -7,8 +7,9 @@
   gap: 10px;
 }
 .cardbox {
-  height: 300px;
-  width: 300px;
+  height: 350px;
+  margin: 10px;
+  width: 280px;
   margin-top: 25px;
   border-radius: 15px;
   background-color: #f5f4f4;
@@ -30,5 +31,9 @@
 
 .list {
   overflow-y: auto;
-  max-height: 300px;
+  max-height: 500px;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }

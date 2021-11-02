@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Alert, Modal } from 'react-bootstrap';
-import Evolution from '../Evolution/Evolution';
-import styles from './EvolutionCard.module.css';
+import { useEffect, useState } from "react"
+import { Alert, Modal } from "react-bootstrap"
+import styles from "./EvolutionCard.module.css"
 
 const EvolutionCard = (props: {
-  showModal: boolean;
-  pokeName?: string;
-  objetoEvolucao?: any;
-  pokeFirst?: string;
+  showModal: boolean
+  pokeName?: string
+  objetoEvolucao?: any
+  pokeFirst?: string
 }) => {
   const [fullscreen, setFullscreen] = useState<
     | true
@@ -17,74 +16,74 @@ const EvolutionCard = (props: {
     | "xl-down"
     | "xxl-down"
     | undefined
-  >(true);
+  >(true)
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
   function handleShow() {
-    setFullscreen(true);
-    setShow(true);
+    setFullscreen(true)
+    setShow(true)
   }
 
   useEffect(() => {
     if (props.showModal) {
-      handleShow();
+      handleShow()
     } else {
-      setShow(false);
-      
+      setShow(false)
     }
-  }, []);
+  }, [])
 
-  // pegando dados do pokemon Base    
+  // pegando dados do pokemon Base
   const detailsBaseEvo =
-    props.objetoEvolucao.chain.evolves_to[0]?.evolution_details[0];
+    props.objetoEvolucao.chain.evolves_to[0]?.evolution_details[0]
 
   // pegando dados da primeira evolução
 
   const detailsFirstEvo =
-    props.objetoEvolucao.chain.evolves_to[0]?.evolves_to[0]?.evolution_details[0]; 
+    props.objetoEvolucao.chain.evolves_to[0]?.evolves_to[0]
+      ?.evolution_details[0]
 
   function showDetails(details: any) {
-    const trigger = details.trigger.name;
+    const trigger = details.trigger.name
 
-     let list = [];
+    let list = []
 
-    
-    for (const key in details) { 
-      
-        const element = details[key];
-        if(element && trigger != "use-item"){
-          if (typeof element === "object") {
-            list.push(
-              <span>
-                <b className="key">{key}</b> :{" "}
-                <span className="value">{element.name}</span>
-              </span>
-            );
-          } else {            
-            list.push(
-              <span>
-                <b className="key">{key}</b> :{" "}
-                <span className="value">{element}</span>
-              </span>
-            );
-          }
-        }         
-      
-    };
-    if (trigger == "use-item") {
-          list.push(<span className = "value">{details.item.name}</span>);
+    for (const key in details) {
+      const element = details[key]
+      if (element && trigger != "use-item") {
+        if (typeof element === "object") {
+          list.push(
+            <span>
+              <b className="key">{key}</b> :{" "}
+              <span className="value">{element.name}</span>
+            </span>
+          )
+        } else {
+          list.push(
+            <span>
+              <b className="key">{key}</b> :{" "}
+              <span className="value">{element}</span>
+            </span>
+          )
         }
+      }
+    }
+    if (trigger == "use-item") {
+      list.push(
+        <span>
+          <b>{trigger}</b> : <span className="value">{details.item.name}</span>
+        </span>
+      )
+    }
     return list
-    
-    
-  } 
+  }
 
-  
   return (
     <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
       <Modal.Header closeButton>
-        <Modal.Title>{props.pokeName}</Modal.Title>
+        <Modal.Title className={styles.capitalize}>
+          {props.pokeName}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {detailsBaseEvo && (
@@ -93,7 +92,7 @@ const EvolutionCard = (props: {
 
             <ul>
               {showDetails(detailsBaseEvo).map((item) => (
-                <li>{item}</li>
+                <li className={styles.capitalize}>{item}</li>
               ))}
             </ul>
           </div>
@@ -111,7 +110,7 @@ const EvolutionCard = (props: {
 
             <ul>
               {showDetails(detailsFirstEvo).map((item) => (
-                <li>{item}</li>
+                <li className={styles.capitalize}>{item}</li>
               ))}
             </ul>
           </div>
@@ -123,8 +122,7 @@ const EvolutionCard = (props: {
         )}
       </Modal.Body>
     </Modal>
-  );
-  
-};;
+  )
+}
 
-export default EvolutionCard;
+export default EvolutionCard
