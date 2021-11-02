@@ -1,0 +1,14 @@
+.pokeCard {
+    position: relative;
+    border: 5px solid #6c757d;
+    margin-bottom: 2em;
+}
+
+.cardTitle {
+    text-align: center;
+}
+
+.imgCarregando {
+    width: 288px;
+    height: 446px;
+}

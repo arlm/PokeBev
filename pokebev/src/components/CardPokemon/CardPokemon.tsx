@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import styles from "./CardPokemon.module.css";
+import placeholder from './placeholder.gif'
 
 interface pokemonDadosTypes {
   name: string,
@@ -18,6 +19,7 @@ function CardPokemon({
   const [pokeDados, setPokeDados] = useState<any>();
   const mountedRef = useRef(true);
   const pokemonEndPoint = 'https://pokeapi.co/api/v2/pokemon';
+  const [loading, setloading] = useState<boolean>(true);
 
   useEffect(() => {
     const pegaPokemon = async () => {
@@ -40,6 +42,7 @@ function CardPokemon({
       } else {
         setPokeDados(pokemonDados);
       }
+      setloading(false);
     };
     pegaPokemon();
     return () => { mountedRef.current = false }
@@ -47,16 +50,17 @@ function CardPokemon({
 
   return (
     <>
-      {pokeDados && (
+      {pokeDados ? (
         <Card
           className={styles.pokeCard}
           style={{ width: "18rem" }}
         >
           <Card.Img
-            className={styles.bodyModal}
+            className={styles.imgPlaceholder}
             variant="top"
             src={pokeDados.sprites}
           />
+
           <Card.Body>
             <Card.Title className={styles.cardTitle}>
               <img className={styles.pokeGif} src={`https://www.smogon.com//dex/media/sprites/xy/${pokeDados.name}.gif`} alt={'Gif pokemon ' + pokeDados.name} />{pokeDados.name.toUpperCase()}
@@ -79,7 +83,10 @@ function CardPokemon({
             </Card.Text>
           </Card.Body>
         </Card>
-      )}
+      ) : (
+        loading && <p><img className={styles.imgCarregando} src={placeholder} alt="Carregando" /></p>
+      )
+      }
     </>
   );
 }

@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import styles from "./Bulbasaur.module.css";
 
 function Bulbasaur() {
   return (
     <>
       <p>
-        <h1>Responsáveis pelo desenvolvimento do componente <a className={styles.link} href="/Berries" >Berries</a></h1>
+        <h1>Responsáveis pelo desenvolvimento do componente <Link className="link" to='/Berries'>Berries</Link></h1>
       </p>
       <div className="d-flex flex-row justify-content-center">
         <div className={styles.ajuste}>

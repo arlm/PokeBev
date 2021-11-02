@@ -4,6 +4,7 @@ import cyro from "./assets/cyro.jpg"
 import gabi from "./assets/gabi.jpg"
 import mari from "./assets/mari.jpg"
 import eudes from "./assets/eudes.png"
+import { Link } from "react-router-dom"
 
 function Squirtle() {
   return (
@@ -11,13 +12,7 @@ function Squirtle() {
       <p>
         <h1>
           Responsáveis pelo desenvolvimento dos componentes{" "}
-          <a className={styles.link} href="/Evolution">
-            Evolution
-          </a>{" "}
-          e{" "}
-          <a className={styles.link} href="/Encounter">
-            Encounter
-          </a>
+          <Link className="link" to='/Evolution'>Evolution</Link> e <Link className="link" to='/Encounter'>Encounter</Link>
         </h1>
       </p>
       <div className="d-flex flex-row justify-content-center">

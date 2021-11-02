@@ -53,7 +53,7 @@ function Version() {
 
   return (
     <div className={styles.mainBox}>
-      {versionsNames.length && !pokemonsOfVersion.length && !loading && (
+      {versionsNames.length && !pokemonsOfVersion.length && !loading && !naoTem && (
         <GamesCard
           titulo='Versão dos Pokemons'
           geterFunc={getVersion}
