@@ -5,7 +5,6 @@
 }
 
 .cardTitle {
-    
     text-align: center;
 }
 
@@ -74,4 +73,16 @@
         transform-origin:left center;
 
       }
+}
+
+.imgCarregando {
+    width: 288px;
+    height: 446px;
+}
+
+.imgPlaceholder {
+    width: 278px;
+    height: 270px;
+    background-image: url('./glitter.gif');
+    background-size: contain;
 }
